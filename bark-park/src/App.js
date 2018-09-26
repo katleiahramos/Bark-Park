@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 
 import './bootstrap-reboot.css';
@@ -19,24 +20,25 @@ import ParkForm from './components/ParkForm'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      parks: [
-        {
-          name: 'Wriggly Field Dog Friendly Area',
-          address: '2645 N Sheffield Ave, Chicago, IL 60614',
-          count: 1
-        }
-      ]
-    }
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     parks: [
+  //       {
+  //         name: 'Wriggly Field Dog Friendly Area',
+  //         address: '2645 N Sheffield Ave, Chicago, IL 60614',
+  //         count: 1
+  //       }
+  //     ]
+  //   }
+  // }
 
   handleAddPark = (parkInfo) => {
     const newPark = {...parkInfo, count: 0}
-    this.setState({
-      parks: this.state.parks.concat(newPark)
-    })
+    // this.setState({
+    //   parks: this.state.parks.concat(newPark)
+    // })
+    this.props.addPark(newPark)
   }
 
   render() {
@@ -56,7 +58,7 @@ class App extends Component {
 
         </Navbar>
 
-        <ParksContainer parks={this.state.parks}/>
+        <ParksContainer parks={this.props.parks}/>
 
 
       </div>
@@ -64,7 +66,17 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {parks: state.parkReducer.parks}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addPark: (park) => dispatch({type: 'ADD_PARK', payload: park})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps )(App);
 
 // HARD CODED VERSION
 // <Row>
