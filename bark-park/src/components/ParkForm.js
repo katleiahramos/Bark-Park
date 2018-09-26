@@ -17,8 +17,13 @@ class ParkForm extends Component {
   handleOnSubmit = (event) => {
     event.preventDefault()
     this.props.addPark(this.state)
-
+    this.setState({
+      name: '',
+      address: '',
+    })
   }
+
+  
   render(){
     return (
     <form onSubmit={this.handleOnSubmit}>
