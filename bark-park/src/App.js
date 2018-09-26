@@ -22,16 +22,22 @@ import ParkForm from './components/ParkForm'
 
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-  this.state = {
-  parks: [
-    {
-      name: 'Wriggly Field Dog Friendly Area',
-      count: '1'
+    this.state = {
+      parks: [
+        {
+          name: 'Wriggly Field Dog Friendly Area',
+          count: '1'
+        }
+      ]
     }
-  ]
-}
+  }
+
+  handleAddPark = (parkInfo) => {
+    this.setState({
+      parks: this.state.parks.concat(parkInfo)
+    })
   }
 
   render() {
@@ -46,7 +52,7 @@ class App extends Component {
               <Icon large>add_circle_outline</Icon>
             </NavItem>
           }>
-            <ParkForm />
+            <ParkForm addPark={this.handleAddPark}/>
           </Modal>
 
         </Navbar>
