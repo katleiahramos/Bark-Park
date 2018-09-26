@@ -28,15 +28,17 @@ class App extends Component {
       parks: [
         {
           name: 'Wriggly Field Dog Friendly Area',
-          count: '1'
+          address: '2645 N Sheffield Ave, Chicago, IL 60614',
+          count: 1
         }
       ]
     }
   }
 
   handleAddPark = (parkInfo) => {
+    const newPark = {...parkInfo, count: 0}
     this.setState({
-      parks: this.state.parks.concat(parkInfo)
+      parks: this.state.parks.concat(newPark)
     })
   }
 
@@ -57,18 +59,9 @@ class App extends Component {
 
         </Navbar>
 
+        <ParksContainer parks={this.state.parks}/>
 
 
-
-        <ParksContainer />
-
-        <Row>
-          <Col s={3}>
-            <Card title={this.state.parks[0].name}>
-              Count: {this.state.parks[0].count}
-            </Card>
-        </Col>
-      </Row>
       </div>
     );
   }
@@ -91,6 +84,15 @@ export default App;
 // <Col s={3}>
 //   <Card title="Logan Square Dog Park">
 //       Count: 1
+//     </Card>
+// </Col>
+// </Row>
+
+// HARD CODED WITH STATE
+// <Row>
+//   <Col s={3}>
+//     <Card title={this.state.parks[0].name}>
+//       Count: {this.state.parks[0].count}
 //     </Card>
 // </Col>
 // </Row>
