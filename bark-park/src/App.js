@@ -5,9 +5,6 @@ import './bootstrap-reboot.css';
 import {
   Navbar,
   NavItem,
-  Col,
-  Card,
-  Row,
   Icon,
   Modal
 } from 'react-materialize';
