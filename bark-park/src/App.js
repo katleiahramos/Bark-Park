@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Navbar, NavItem, Col, Card, Row, Icon} from 'react-materialize';
+
+import './bootstrap-reboot.css';
+import {
+  Navbar,
+  NavItem,
+  Col,
+  Card,
+  Row,
+  Icon,
+  Modal
+} from 'react-materialize';
+
+
+
 
 import ParksContainer from './containers/ParksContainer'
+import ParkForm from './components/ParkForm'
 
 // TODO: NavBar, logo only correct aligned when using left
 
@@ -23,9 +37,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
         <Navbar brand='Bark Park' left>
-          <NavItem onClick={() => console.log('test click')}><Icon>add_circle_outline</Icon></NavItem>
+          <Modal
+          header='Add Park'
+          trigger={
+            <NavItem>
+              <Icon large>add_circle_outline</Icon>
+            </NavItem>
+          }>
+            <ParkForm />
+          </Modal>
+
         </Navbar>
+
+
+
 
         <ParksContainer />
 
