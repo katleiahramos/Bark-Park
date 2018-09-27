@@ -9,7 +9,8 @@ export default function parkReducer(
         id: cuid(), 
         count: 1
       }
-    ]
+    ], 
+    editingParks: false, 
   },
   action
 ) {

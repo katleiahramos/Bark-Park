@@ -1,6 +1,5 @@
-import { Card, Col, Button, Modal, Icon } from "react-materialize";
-import React, { Component } from "react";
-import ParkForm from './ParkForm'
+import { Card, Col, Button, Modal} from "react-materialize";
+import React from "react";
 
 
 // ////////////// Class version 
@@ -75,19 +74,19 @@ import ParkForm from './ParkForm'
 const Park = ({ parkInfo, deletePark, editPark }) => {
   // parkInfo =>  {name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", id: "cjmkvc3xu00023b5t4t1z4aq1", count: 1}
 
-  const parkCard = (
-    <Col s={3}>
-      <Card title={parkInfo.name}>
-        <p>Count: {parkInfo.count}</p>
-        <Button onClick={() => deletePark(parkInfo.id)} waves="light">
-          <Icon>delete</Icon>
-        </Button>
-        <Button onClick={() => editPark(parkInfo.id)} waves="light">
-          <Icon>edit</Icon>
-        </Button>
-      </Card>
-    </Col>
-  );
+  // const parkCard = (
+  //   <Col s={3}>
+  //     <Card title={parkInfo.name}>
+  //       <p>Count: {parkInfo.count}</p>
+  //       <Button onClick={() => deletePark(parkInfo.id)} waves="light">
+  //         <Icon>delete</Icon>
+  //       </Button>
+  //       <Button onClick={() => editPark(parkInfo.id)} waves="light">
+  //         <Icon>edit</Icon>
+  //       </Button>
+  //     </Card>
+  //   </Col>
+  // );
 
 
   // TODO: maybe use ROUTES here to make certain modals appear. 
