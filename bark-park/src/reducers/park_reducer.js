@@ -6,6 +6,7 @@ export default function parkReducer(
       {
         name: "Wriggly Field Dog Friendly Area",
         address: "2645 N Sheffield Ave, Chicago, IL 60614",
+        id: cuid(), 
         count: 1
       }
     ]

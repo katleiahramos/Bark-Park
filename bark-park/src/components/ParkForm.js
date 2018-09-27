@@ -8,7 +8,7 @@ class ParkForm extends Component {
     address: ""
   };
 
-  handleOnChange = event => {
+  handleOnChange = event =>  {
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -17,7 +17,7 @@ class ParkForm extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     // adding validation
-    if (this.state.name !== "") this.props.addPark(this.state);
+    if (this.state.name !==  "") this.props.addPark(this.state);
     this.setState({
       name: "",
       address: ""
