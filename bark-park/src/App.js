@@ -41,6 +41,8 @@ class App extends Component {
     this.props.addPark(parkInfo)
   }
 
+
+
   render() {
     return (
       <div className="App">
@@ -58,7 +60,7 @@ class App extends Component {
 
         </Navbar>
 
-        <ParksContainer parks={this.props.parks}/>
+        <ParksContainer deletePark={this.props.deletePark} parks={this.props.parks}/>
 
 
       </div>
@@ -72,7 +74,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addPark: (park) => dispatch({type: 'ADD_PARK', payload: park})
+    addPark: (park) => dispatch({type: 'ADD_PARK', payload: park}),
+    deletePark: (parkId) => dispatch({type: 'DELETE_PARK', parkId: parkId})
   }
 }
 

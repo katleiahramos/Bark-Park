@@ -19,6 +19,10 @@ export default function parkReducer(
       const park = { ...action.payload, id: cuid(), count: 0 }; //{name: "test", address: "test", id: "cjmkq4hx100003b5x1m6mdqyu", count: 0}
       console.log("returning", { parks: state.parks.concat(park) });
       return { parks: state.parks.concat(park) };
+    case "DELETE_PARK":
+      const parks = state.parks.filter( park => park.id !== action.parkId)
+      console.log('after delete parks are', {parks: parks} )
+      return {parks: parks};
     default:
       return state;
   }
