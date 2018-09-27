@@ -5,7 +5,8 @@ const Park = ({parkInfo}) => {
   return (
     <Col s={3}>
       <Card title={parkInfo.name}>
-        Count: {parkInfo.count}
+        <p>Address: {parkInfo.address}</p>
+        <p>Count: {parkInfo.count}</p>
       </Card>
     </Col>)
 }
