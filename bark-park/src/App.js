@@ -20,26 +20,12 @@ import ParkForm from './components/ParkForm'
 
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     parks: [
-  //       {
-  //         name: 'Wriggly Field Dog Friendly Area',
-  //         address: '2645 N Sheffield Ave, Chicago, IL 60614',
-  //         count: 1
-  //       }
-  //     ]
-  //   }
+
+  // editPark = (parkId) => {
+  //   const parkToEdit = this.props.parks.find( park => park.id === parkId)
+  //   return null 
   // }
 
-  handleAddPark = (parkInfo) => {
-    
-    // this.setState({
-    //   parks: this.state.parks.concat(newPark)
-    // })
-    this.props.addPark(parkInfo)
-  }
 
 
 
@@ -48,19 +34,21 @@ class App extends Component {
       <div className="App">
 
         <Navbar brand='Bark Park' left>
+    
           <Modal
-          header='Add Park'
-          trigger={
-            <NavItem>
-              <Icon large>add_circle_outline</Icon>
-            </NavItem>
-          }>
-            <ParkForm addPark={this.handleAddPark}/>
+            header='Add Park'
+            trigger={<NavItem><Icon large>add_circle_outline</Icon></NavItem>}
+          >
+            <ParkForm
+              addPark={this.props.addPark} />
           </Modal>
 
         </Navbar>
 
-        <ParksContainer deletePark={this.props.deletePark} parks={this.props.parks}/>
+        <ParksContainer
+          deletePark={this.props.deletePark}
+          editPark={this.editPark}
+          parks={this.props.parks} />
 
 
       </div>

@@ -5,11 +5,12 @@ import Parks from '../components/Parks'
 class ParksContainer extends Component {
 
   render(){
-    return(
-      <div>
-        <Parks deletePark={this.props.deletePark} parks={this.props.parks} />
-      </div>
-    )
+    return <div>
+        <Parks 
+          deletePark={this.props.deletePark}
+          editPark={this.props.editPark} 
+          parks={this.props.parks} />
+      </div>;
   }
 }
 

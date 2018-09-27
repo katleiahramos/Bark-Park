@@ -17,7 +17,7 @@ class ParkForm extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     // adding validation
-    if (this.state.name !==  "") this.props.addPark(this.state);
+    this.props.addPark(this.state);
     this.setState({
       name: "",
       address: ""

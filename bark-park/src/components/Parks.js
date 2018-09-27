@@ -1,26 +1,28 @@
-import React, { Component } from 'react';
-import {Row} from 'react-materialize';
-import Park from './Park';
+import React, { Component } from "react";
+import { Row } from "react-materialize";
+import Park from "./Park";
 
 class Parks extends Component {
-
-
   renderParks = () => {
-    return this.props.parks.map( (park, idx) => {
+    return this.props.parks.map((park, idx) => {
       // park => {name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", id: "cjmkvc3xu00023b5t4t1z4aq1", count: 1}
-      return <Park deletePark={this.props.deletePark} parkInfo={park} key={idx} />
-    })
-  }
+      return (
+        <Park 
+          deletePark={this.props.deletePark}
+          editPark={this.props.editPark} 
+          parkInfo={park} 
+          key={idx} />
+      );
+    });
+  };
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="Parks">
-        <Row>
-        {this.renderParks()}
-        </Row>
+        <Row>{this.renderParks()}</Row>
       </div>
-    )
+    );
   }
 }
 
-export default Parks
+export default Parks;
