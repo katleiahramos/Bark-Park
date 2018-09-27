@@ -34,11 +34,11 @@ class App extends Component {
   // }
 
   handleAddPark = (parkInfo) => {
-    const newPark = {...parkInfo, count: 0}
+    
     // this.setState({
     //   parks: this.state.parks.concat(newPark)
     // })
-    this.props.addPark(newPark)
+    this.props.addPark(parkInfo)
   }
 
   render() {
@@ -78,30 +78,4 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps, mapDispatchToProps )(App);
 
-// HARD CODED VERSION
-// <Row>
-//   <Col s={3}>
-//     <Card title="Wriggly Field Dog Friendly Area">
-//       Count: 1
-//     </Card>
-// </Col>
-// <Col s={3}>
-//   <Card title="Belmont Harbor Dog Beach">
-//       Count: 1
-//   </Card>
-// </Col>
-// <Col s={3}>
-//   <Card title="Logan Square Dog Park">
-//       Count: 1
-//     </Card>
-// </Col>
-// </Row>
 
-// HARD CODED WITH STATE
-// <Row>
-//   <Col s={3}>
-//     <Card title={this.state.parks[0].name}>
-//       Count: {this.state.parks[0].count}
-//     </Card>
-// </Col>
-// </Row>
