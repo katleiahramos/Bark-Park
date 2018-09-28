@@ -3,12 +3,13 @@ import React, { Component } from "react";
 import { Input, Button } from "react-materialize";
 
 class ParkForm extends Component {
+
   state = {
-    name: "",
-    address: ""
+    name: this.props.name || "",
+    address: this.props.address || "",
   };
 
-  handleOnChange = event =>  {
+  handleOnChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });

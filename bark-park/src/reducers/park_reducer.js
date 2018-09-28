@@ -11,6 +11,7 @@ export default function parkReducer(
       }
     ], 
     editingParks: false, 
+    parkToEdit: null,
   },
   action
 ) {
@@ -26,7 +27,9 @@ export default function parkReducer(
       return {parks: parks};
     case 'EDITING_PARK':
       console.log('in editing parks');
-      return {parks: state.parks, editingParks: true}
+      console.log('returning..', {parks: state.parks, editingParks: true, parkToEdit: action.payload});
+      
+      return {parks: state.parks, editingParks: true, parkToEdit: action.payload}
     default:
       return state;
   }
