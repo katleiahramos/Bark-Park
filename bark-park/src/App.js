@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import "./App.css";
 
 import "./bootstrap-reboot.css";
-import { Navbar, NavItem, Icon, Modal } from "react-materialize";
+import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem } from "react-materialize";
 
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
@@ -36,19 +36,33 @@ class App extends Component {
     )
 
     return (
-      <div className="App">
-        <Navbar brand="Bark Park" left>
-          <Modal
-            header="Add Park"
-            trigger={
-              <NavItem>
-                <Icon large>add_circle_outline</Icon>
-              </NavItem>
-            }
-          >
-            <ParkForm addPark={this.props.addPark} />
-          </Modal>
-        </Navbar>
+      <div className="App ">
+        <SideNav
+          options={{ closeOnClick: false }}
+          className=""
+          fixed 
+        >
+          <SideNavItem userView 
+            user={{
+              background: '/grassbackground_small.jpg',
+              image: '/barkparkicon.jpg',
+              name: 'John Doe',
+              email: 'jdandturk@gmail.com'
+            }}
+          />
+
+            <Collapsible>
+              <CollapsibleItem header="Add New Park" icon="add_circle_outline">
+              <ParkForm addPark={this.props.addPark} />
+              </CollapsibleItem>
+            </Collapsible>
+
+          <SideNavItem divider />
+          <SideNavItem subheader>Subheader</SideNavItem>
+          <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>
+        </SideNav>
+
+
 
         <ParksContainer
           deletePark={this.props.deletePark}
@@ -84,3 +98,17 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
+
+
+{/* <Modal
+header="Add Park"
+trigger={
+  <SideNavItem 
+    href='#!icon' 
+    icon='add_circle_outline'>
+      Add New Park
+  </SideNavItem>
+}
+>
+<ParkForm addPark={this.props.addPark} />
+</Modal> */}

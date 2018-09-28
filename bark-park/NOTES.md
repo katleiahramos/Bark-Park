@@ -25,3 +25,8 @@
 //     </Card>
 // </Col>
 // </Row>
+
+    OLD NAV BAR 
+    
+        <Navbar brand="Bark Park" left>
+        </Navbar>

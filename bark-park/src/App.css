@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding-left: 300px;
 }
 
 .App-logo {
@@ -26,3 +27,10 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+

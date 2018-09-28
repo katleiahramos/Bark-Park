@@ -95,16 +95,17 @@ const Park = ({ parkInfo, deletePark, editPark }) => {
   return (
       <Col s={3}>
 
-        <Card title={parkInfo.name}>
+        <Card title={parkInfo.name} className="teal lighten-5">
           <p>Count: {parkInfo.count}</p>
           <Modal
-          trigger={
-            <Button
-              floating icon="more_horiz"
-              waves="light"
-            />
-          }
-          header={parkInfo.name}>
+            trigger={
+              <Button
+                floating icon="more_horiz"
+                waves="light"
+              />
+            }
+            header={parkInfo.name}
+            s={6}>
           <h5>Address: {parkInfo.address}</h5>
           <h5>Count: {parkInfo.count}</h5>
         </Modal>
