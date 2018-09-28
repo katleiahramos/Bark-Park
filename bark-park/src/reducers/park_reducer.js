@@ -24,6 +24,9 @@ export default function parkReducer(
       const parks = state.parks.filter( park => park.id !== action.parkId)
       console.log('after delete parks are', {parks: parks} )
       return {parks: parks};
+    case 'EDITING_PARK':
+      console.log('in editing parks');
+      return {parks: state.parks, editingParks: true}
     default:
       return state;
   }

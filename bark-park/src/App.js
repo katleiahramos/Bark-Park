@@ -18,14 +18,14 @@ class App extends Component {
 
   editPark = parkId => {
     const parkToEdit = this.props.parks.find(park => park.id === parkId);
-    this.props.updatePark(parkToEdit)
+    this.props.editingPark()
   };
 
-
+  //TODO: Modal opens, but we need to add logic so the form puplates with existing information 
 
   render() {
 
-    // const modalForm = this.props.parks.editing ? " here is the form" : "not editing!"; 
+    const modalForm = this.props.editing ? <Modal open><ParkForm updatePark={this.props.updatePark} /></Modal>: "not editing!"; 
 
     return (
       <div className="App">
@@ -66,7 +66,8 @@ const mapDispatchToProps = dispatch => {
   return {
     addPark: park => dispatch({ type: "ADD_PARK", payload: park }),
     deletePark: parkId => dispatch({ type: "DELETE_PARK", parkId: parkId }),
-    updatePark: park => dispatch({type: "UPDATE_PARK", payload: park})
+    editingPark: () => dispatch({type: "EDITING_PARK"}),
+    updatePark: () => dispatch({type: "UPDATE_PARK"})
   };
 };
 
