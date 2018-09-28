@@ -21,6 +21,11 @@ class App extends Component {
     this.props.editingPark(parkToEdit)
   };
 
+  updatePark = parkEdited => {
+    this.props.updatePark(parkEdited)
+    // can I somehow get the modal to close here
+  }
+
   //TODO: Modal opens, but we need to add logic so the form puplates with existing information 
 
   render() {
@@ -28,10 +33,11 @@ class App extends Component {
     const modalForm = (this.props.parkToEdit ? 
       <Modal open>
         <ParkForm 
-          updatePark={this.props.updatePark} 
+          updatePark={this.updatePark} 
           name={this.props.parkToEdit.name} 
-          address={this.props.parkToEdit.address}/>
-        </Modal> 
+          address={this.props.parkToEdit.address}
+          oldPark={this.props.parkToEdit} />
+      </Modal>
       : null
     )
 
@@ -58,11 +64,10 @@ class App extends Component {
             </Collapsible>
 
           <SideNavItem divider />
-          <SideNavItem subheader>Subheader</SideNavItem>
-          <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>
+
         </SideNav>
 
-
+        {modalForm}
 
         <ParksContainer
           deletePark={this.props.deletePark}
@@ -70,7 +75,7 @@ class App extends Component {
           parks={this.props.parks}
         />
 
-        <h2>{modalForm}</h2>
+
 
       </div>
     );
@@ -90,7 +95,7 @@ const mapDispatchToProps = dispatch => {
     addPark: park => dispatch({ type: "ADD_PARK", payload: park }),
     deletePark: parkId => dispatch({ type: "DELETE_PARK", parkId: parkId }),
     editingPark: (park) => dispatch({type: "EDITING_PARK", payload: park}),
-    updatePark: () => dispatch({type: "UPDATE_PARK"})
+    updatePark: (parkEdited) => dispatch({type: "UPDATE_PARK", parkEdited: parkEdited})
   };
 };
 
