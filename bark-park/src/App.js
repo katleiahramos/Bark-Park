@@ -8,7 +8,7 @@ import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible
 
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
-
+import MapContainer from "./containers/MapContainer"
 
 // TODO: NavBar, logo only correct aligned when using left
 
@@ -74,6 +74,8 @@ class App extends Component {
           editPark={this.editPark}
           parks={this.props.parks}
         />
+
+        <MapContainer />
 
 
 
