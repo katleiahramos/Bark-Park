@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 // import { Route } from 'react-router-dom'
 import "./App.css";
 
-import "./bootstrap-reboot.css";
 import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem } from "react-materialize";
 
 import ParksContainer from "./containers/ParksContainer";
@@ -61,11 +60,18 @@ class App extends Component {
             }}
           />
 
-            <Collapsible>
-              <CollapsibleItem header="Add New Park" icon="add_circle_outline">
+
+
+          <SideNavItem href='#'>Home</SideNavItem>
+          <SideNavItem href='#'>About BarkPark</SideNavItem>
+          
+          <SideNavItem divider />
+          <Collapsible>
+            <CollapsibleItem header="Add New Park" icon="add_circle_outline">
               <ParkForm addPark={this.props.addPark} />
-              </CollapsibleItem>
-            </Collapsible>
+            </CollapsibleItem>
+          </Collapsible>
+
 
           <SideNavItem divider />
           <SideNavItem subheader>Saved Parks</SideNavItem>
