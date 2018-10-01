@@ -9,10 +9,8 @@ export function fetchParks(){
    return (dispatch) => {
        dispatch({type: 'BEGIN_PARKS_REQUEST'})
        console.log('fetching parks')
-       return fetch('/api/parks', {
-           accept: 'application/json',
-       })
-       .then(resp => console.log('resp is...', resp.json) )
+       return fetch('http://localhost:3001/api/parks')
+       .then(resp =>  resp.json() )
        .then(parks => dispatch({type: 'ADD_PARKS', payload: parks}))
    }
 }

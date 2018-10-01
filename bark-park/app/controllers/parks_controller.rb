@@ -1,3 +1,5 @@
+require 'pry'
+
 class ParksController < ApplicationController 
 
     def index
