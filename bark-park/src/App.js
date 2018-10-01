@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 
 import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem } from "react-materialize";
@@ -46,6 +46,11 @@ class App extends Component {
 
     return (
       <div className="App ">
+        <Router>
+          {/* <Route exact path="/" component={Home} /> */}
+          <Route exact path="/about" component={About} />
+        </Router>
+
         <SideNav
           options={{ closeOnClick: false }}
           fixed
@@ -62,8 +67,8 @@ class App extends Component {
 
 
 
-          <SideNavItem href='#'>Home</SideNavItem>
-          <SideNavItem href='#'>About BarkPark</SideNavItem>
+          <SideNavItem href='/'>Home</SideNavItem>
+          <SideNavItem href='/about'>About BarkPark</SideNavItem>
           
           <SideNavItem divider />
           <Collapsible>
@@ -113,6 +118,18 @@ const mapDispatchToProps = dispatch => {
     checkIn: (parkId) => dispatch({type: "CHECK_IN", parkId})
   };
 };
+
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+);
+
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+);
 
 export default connect(
   mapStateToProps,

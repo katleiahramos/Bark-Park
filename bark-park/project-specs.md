@@ -13,10 +13,15 @@
 []There should be 5 stateless components
     - Park.js 
 []There should be 3 routes
+    - home
+    - about
+    - logout ? 
 
 []The Application must make use of react-router and proper RESTful routing (should you choose to use react-router v3 please refer to the appropriate docs; docs for v4 can be found here)
 
-[]Use Redux middleware to respond to and modify state change
+[x]Use Redux middleware to respond to and modify state change
+    - reducers (parkReducer)
+    - actions 
 
 []Make use of async actions to send data to and receive data from a server
 
@@ -24,4 +29,5 @@
 
 []Your client-side application should handle the display of data with minimal data manipulation
 
-[]Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it!
+[x]Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it!
+    - react-materialize 
