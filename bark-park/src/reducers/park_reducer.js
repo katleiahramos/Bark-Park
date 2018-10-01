@@ -38,6 +38,11 @@ export default function parkReducer(
       parks = state.parks.map( park => park.id === action.parkEdited.id ? action.parkEdited : park)
       console.log('parks is now...', parks)
       return { editingParks: false, parkToEdit: null, parks: parks}
+    case 'CHECK_IN': 
+      console.log("checking in...");
+      parks = state.parks.map( park => park.id === action.parkId ? {...park, count: park.count = park.count + 1} : park)
+      console.log('returning', parks);
+      return {...state, parks: parks}
     default:
       return state;
   }

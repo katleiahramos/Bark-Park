@@ -11,7 +11,8 @@ class Parks extends Component {
           deletePark={this.props.deletePark}
           editPark={this.props.editPark} 
           parkInfo={park} 
-          key={idx} />
+          key={idx}
+          checkIn={this.props.checkIn} />
       );
     });
   };

@@ -9,7 +9,8 @@ class ParksContainer extends Component {
         <Parks 
           deletePark={this.props.deletePark}
           editPark={this.props.editPark} 
-          parks={this.props.parks} />
+          parks={this.props.parks}
+          checkIn={this.props.checkIn} />
       </div>;
   }
 }

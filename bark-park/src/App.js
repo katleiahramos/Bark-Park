@@ -26,6 +26,10 @@ class App extends Component {
     // can I somehow get the modal to close here
   }
 
+  checkIn = parkId => {
+    this.props.checkIn(parkId)
+  }
+
   //TODO: Modal opens, but we need to add logic so the form puplates with existing information 
 
   render() {
@@ -74,6 +78,7 @@ class App extends Component {
           deletePark={this.props.deletePark}
           editPark={this.editPark}
           parks={this.props.parks}
+          checkIn={this.checkIn}
         />
 
         <MapContainer />
@@ -98,7 +103,8 @@ const mapDispatchToProps = dispatch => {
     addPark: park => dispatch({ type: "ADD_PARK", payload: park }),
     deletePark: parkId => dispatch({ type: "DELETE_PARK", parkId: parkId }),
     editingPark: (park) => dispatch({type: "EDITING_PARK", payload: park}),
-    updatePark: (parkEdited) => dispatch({type: "UPDATE_PARK", parkEdited: parkEdited})
+    updatePark: (parkEdited) => dispatch({type: "UPDATE_PARK", parkEdited: parkEdited}),
+    checkIn: (parkId) => dispatch({type: "CHECK_IN", parkId})
   };
 };
 
