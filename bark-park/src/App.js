@@ -45,8 +45,8 @@ class App extends Component {
       <div className="App ">
         <SideNav
           options={{ closeOnClick: false }}
+          fixed
           className=""
-          fixed 
         >
           <SideNavItem userView 
             user={{
@@ -64,6 +64,7 @@ class App extends Component {
             </Collapsible>
 
           <SideNavItem divider />
+          <SideNavItem subheader>Saved Parks</SideNavItem>
 
         </SideNav>
 
