@@ -18,6 +18,12 @@ export default function parkReducer(
   let parks = [] 
 
   switch (action.type) {
+    case 'BEING_PARKS_REQUEST':
+      console.log('sending request...');
+      return state 
+    case 'ADD_PARKS':
+      debugger
+      return state
     case "ADD_PARK":
       console.log(action.payload); //{name: "test", address: "test"}
       const park = { ...action.payload, id: cuid(), count: 0 }; //{name: "test", address: "test", id: "cjmkq4hx100003b5x1m6mdqyu", count: 0}

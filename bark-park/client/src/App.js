@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-
+import { fetchParks } from './actions/parkActions'
 import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem } from "react-materialize";
 
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
 import MapContainer from "./containers/MapContainer"
+
 
 // TODO: NavBar, logo only correct aligned when using left
 
@@ -28,6 +29,11 @@ class App extends Component {
   checkIn = parkId => {
     this.props.checkIn(parkId)
   }
+
+  componentDidMount(){
+    this.props.fetchParks();
+  }
+  
 
   //TODO: Modal opens, but we need to add logic so the form puplates with existing information 
 
@@ -115,7 +121,8 @@ const mapDispatchToProps = dispatch => {
     deletePark: parkId => dispatch({ type: "DELETE_PARK", parkId: parkId }),
     editingPark: (park) => dispatch({type: "EDITING_PARK", payload: park}),
     updatePark: (parkEdited) => dispatch({type: "UPDATE_PARK", parkEdited: parkEdited}),
-    checkIn: (parkId) => dispatch({type: "CHECK_IN", parkId})
+    checkIn: (parkId) => dispatch({type: "CHECK_IN", parkId}), 
+    fetchParks: ()=>{dispatch(fetchParks())},
   };
 };
 

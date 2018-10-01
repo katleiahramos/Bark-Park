@@ -7,6 +7,7 @@ import rootReducer from './reducers/index.js'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom';
+import thunk from 'redux-thunk';
 
 const store = createStore(rootReducer)
 
