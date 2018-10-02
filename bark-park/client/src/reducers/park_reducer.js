@@ -2,14 +2,7 @@ import cuid from "cuid";
 
 export default function parkReducer(
   state = {
-    parks: [
-      {
-        name: "Wriggly Field Dog Friendly Area",
-        address: "2645 N Sheffield Ave, Chicago, IL 60614",
-        id: cuid(), 
-        count: 1
-      }
-    ], 
+    parks: [], 
     editingParks: false, 
     parkToEdit: null,
   },
@@ -22,9 +15,9 @@ export default function parkReducer(
       console.log('sending request...');
       return state 
     case 'ADD_PARKS':
-      console.log('ADD_PARKS is returning..',{...state, parks: action.payload} );
+      console.log('ADD_PARKS is returning..',{parks: action.payload} );
       
-      return {...state, parks: action.payload}
+      return {parks: action.payload}
     case "ADD_PARK":
       console.log(action.payload); //{name: "test", address: "test"}
       const park = { ...action.payload, id: cuid(), count: 0 }; //{name: "test", address: "test", id: "cjmkq4hx100003b5x1m6mdqyu", count: 0}

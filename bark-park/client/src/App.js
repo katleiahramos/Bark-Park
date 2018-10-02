@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import { fetchParks } from './actions/parkActions'
+import { fetchParks, postPark } from './actions/parkActions'
 import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem } from "react-materialize";
 
 import ParksContainer from "./containers/ParksContainer";
@@ -35,7 +35,7 @@ class App extends Component {
   }
   
 
-  //TODO: Modal opens, but we need to add logic so the form puplates with existing information 
+
 
   render() {
 
@@ -57,37 +57,25 @@ class App extends Component {
           <Route exact path="/about" component={About} />
         </Router>
 
-        <SideNav
-          options={{ closeOnClick: false }}
-          fixed
-          className=""
-        >
-          <SideNavItem userView 
-            user={{
-              background: '/grassbackground_small.jpg',
-              image: '/barkparkicon.jpg',
-              name: 'John Doe',
-              email: 'jdandturk@gmail.com'
-            }}
-          />
+        <Navbar brand="Bark Park" right fluid>
+                  <Modal
+          header="Add Park"
+          trigger={
+            <NavItem
+              href='#!icon'
+              icon="add_circle">
+              Add Park
+            </NavItem>
+          }
+          >
+          <ParkForm addPark={this.props.addPark} />
+          </Modal>
 
-
-
-          <SideNavItem href='/'>Home</SideNavItem>
-          <SideNavItem href='/about'>About BarkPark</SideNavItem>
           
-          <SideNavItem divider />
-          <Collapsible>
-            <CollapsibleItem header="Add New Park" icon="add_circle_outline">
-              <ParkForm addPark={this.props.addPark} />
-            </CollapsibleItem>
-          </Collapsible>
 
+        </Navbar>
 
-          <SideNavItem divider />
-          <SideNavItem subheader>Saved Parks</SideNavItem>
-
-        </SideNav>
+        
 
         {modalForm}
 
@@ -117,7 +105,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addPark: park => dispatch({ type: "ADD_PARK", payload: park }),
+    // addPark: park => dispatch({ type: "ADD_PARK", payload: park }),
+    addPark: (park)=> dispatch(postPark(park)),
     deletePark: parkId => dispatch({ type: "DELETE_PARK", parkId: parkId }),
     editingPark: (park) => dispatch({type: "EDITING_PARK", payload: park}),
     updatePark: (parkEdited) => dispatch({type: "UPDATE_PARK", parkEdited: parkEdited}),
@@ -156,3 +145,36 @@ trigger={
 >
 <ParkForm addPark={this.props.addPark} />
 </Modal> */}
+
+
+{/* <SideNav
+options={{ closeOnClick: true }}
+trigger={<NavItem><Button>Your Parks</Button></NavItem>}
+className=""
+>
+<SideNavItem userView 
+  user={{
+    background: '/grassbackground_small.jpg',
+    image: '/barkparkicon.jpg',
+    name: 'John Doe',
+    email: 'jdandturk@gmail.com'
+  }}
+/>
+
+
+
+<SideNavItem href='/'>Home</SideNavItem>
+<SideNavItem href='/about'>About BarkPark</SideNavItem>
+
+<SideNavItem divider />
+<Collapsible>
+  <CollapsibleItem header="Add New Park" icon="add_circle_outline">
+    <ParkForm addPark={this.props.addPark} />
+  </CollapsibleItem>
+</Collapsible>
+
+
+<SideNavItem divider />
+<SideNavItem subheader>Saved Parks</SideNavItem>
+
+</SideNav> */}
