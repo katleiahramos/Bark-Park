@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import { fetchParks, postPark } from './actions/parkActions'
+import { fetchParks, postPark, deletePark} from './actions/parkActions'
 import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem } from "react-materialize";
 
 import ParksContainer from "./containers/ParksContainer";
@@ -86,7 +86,7 @@ class App extends Component {
           checkIn={this.checkIn}
         />
 
-        <MapContainer />
+        {/* <MapContainer /> */}
 
 
 
@@ -107,7 +107,7 @@ const mapDispatchToProps = dispatch => {
   return {
     // addPark: park => dispatch({ type: "ADD_PARK", payload: park }),
     addPark: (park)=> dispatch(postPark(park)),
-    deletePark: parkId => dispatch({ type: "DELETE_PARK", parkId: parkId }),
+    deletePark: parkId => dispatch(deletePark(parkId)),
     editingPark: (park) => dispatch({type: "EDITING_PARK", payload: park}),
     updatePark: (parkEdited) => dispatch({type: "UPDATE_PARK", parkEdited: parkEdited}),
     checkIn: (parkId) => dispatch({type: "CHECK_IN", parkId}), 

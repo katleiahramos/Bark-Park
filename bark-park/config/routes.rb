@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     # get '/api/parks', to: "parks#index"
     # get :parks, to: "parks#index"
     post '/api/parks', to: "parks#create"
-    resources :parks, only: [:index, :create]
+    resources :parks
     end 
 
 end

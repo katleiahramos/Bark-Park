@@ -12,6 +12,11 @@ class ParksController < ApplicationController
         render json: Park.all
     end
 
+    def destroy
+        @park = Park.find(params[:id])
+        @park.destroy
+    end
+
     private 
     
     def park_params
