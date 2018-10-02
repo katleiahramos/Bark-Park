@@ -4,6 +4,7 @@
 // updatePark: (parkEdited) => dispatch({type: "UPDATE_PARK", parkEdited: parkEdited}),
 // checkIn: (parkId) => dispatch({type: "CHECK_IN", parkId})
 
+
 export function fetchParks() {
     console.log('in fetch parks...')
     return (dispatch) => {
@@ -59,7 +60,11 @@ export function updatePark(park) {
         })
         .then( resp => console.log('park updated'))
         .then(() => dispatch(fetchParks()))
-        
     }
+}
+
+export function checkIn(park){
+    const parkCheckedIn = {...park, count: ++park.count }
+    return (dispatch)=>{dispatch(updatePark(parkCheckedIn))};
 }
 

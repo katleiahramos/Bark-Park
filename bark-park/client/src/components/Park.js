@@ -114,7 +114,7 @@ const Park = ({ parkInfo, deletePark, editPark, checkIn }) => {
         <Button
           floating
           icon="check_circle"
-          onClick={() => checkIn(parkInfo.id)}
+          onClick={() => checkIn(parkInfo)}
         />
       </Card>
     </Col>

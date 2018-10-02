@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import { fetchParks, postPark, deletePark, updatePark} from './actions/parkActions'
+import { fetchParks, postPark, deletePark, updatePark, checkIn} from './actions/parkActions'
 import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem } from "react-materialize";
 
 import ParksContainer from "./containers/ParksContainer";
@@ -26,8 +26,8 @@ class App extends Component {
     // can I somehow get the modal to close here
   }
 
-  checkIn = parkId => {
-    this.props.checkIn(parkId)
+  checkIn = park => {
+    this.props.checkIn(park)
   }
 
   componentDidMount(){
@@ -111,7 +111,7 @@ const mapDispatchToProps = dispatch => {
     deletePark: parkId => dispatch(deletePark(parkId)),
     editingPark: (park) => dispatch({type: "EDITING_PARK", payload: park}),
     updatePark: (parkEdited) => dispatch(updatePark(parkEdited)),
-    checkIn: (parkId) => dispatch({type: "CHECK_IN", parkId}), 
+    checkIn: (park) => dispatch(checkIn(park)), 
     fetchParks: ()=>dispatch(fetchParks()),
   };
 };
