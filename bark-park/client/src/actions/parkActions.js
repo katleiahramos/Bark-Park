@@ -47,3 +47,19 @@ export function deletePark(parkId) {
     }
 }
 
+export function updatePark(park) {
+    console.log('in update park, park is:', park)
+    return(dispatch)=>{
+        dispatch({type: "BEGIN_BOOKS_REQUEST"});
+        const body = JSON.stringify({ park: { name: park.name, address: park.address, count: park.count} })
+        return fetch(`/api/parks/${park.id}`, {
+            method: 'PATCH',
+            headers: { "Content-type": 'application/json' },
+            body: body,
+        })
+        .then( resp => console.log('park updated'))
+        .then(() => dispatch(fetchParks()))
+        
+    }
+}
+

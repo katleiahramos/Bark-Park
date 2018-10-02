@@ -17,6 +17,11 @@ class ParksController < ApplicationController
         @park.destroy
     end
 
+    def update
+        @park = Park.find(params[:id])
+        @park.update(park_params)
+    end
+
     private 
     
     def park_params
