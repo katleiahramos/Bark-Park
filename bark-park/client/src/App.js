@@ -86,8 +86,8 @@ class App extends Component {
           checkIn={this.checkIn}
         />
 
-          {/* TODO: uncomment maps container */}
-        {/* <MapContainer /> */}
+        
+        <MapContainer parks={this.props.parks} />
 
 
 
