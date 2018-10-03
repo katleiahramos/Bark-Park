@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import { fetchParks, postPark, deletePark, updatePark, checkIn} from './actions/parkActions'
 import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem } from "react-materialize";
+import Geocode from "react-geocode";
 
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
@@ -33,6 +34,8 @@ class App extends Component {
   componentDidMount(){
     this.props.fetchParks();
   }
+
+  
   
 
 

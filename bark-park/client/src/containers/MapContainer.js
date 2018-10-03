@@ -1,53 +1,87 @@
 import React, { Component }from 'react'
-import { GoogleApiWrapper } from 'google-maps-react';
 import Geocode from "react-geocode";
 
-import Map from '../components/Map'
 
-
+// import Map from '../components/Map'
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 export class MapContainer extends Component {
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {},
+  };
 
-  getGeoCode = () => {
-    Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0")
-    Geocode.fromAddress("N Lake Shore Dr & Lake Shore Drive Dr, Chicago, IL 60657").then(
+  onMarkerClick = (props, marker, e) =>
+  this.setState({
+    selectedPlace: props,
+    activeMarker: marker,
+    showingInfoWindow: true
+  });
+
+  // <Marker
+  // title={'CHI'}
+  // name={'Chicago'}
+  // onClick={this.onMarkerClick}
+  // position={{ lat: 41.8781, lng: -87.6298 }} />
+  
+
+
+  renderMarkers = () => {
+    return this.props.parks.map( park => {
+      const latLong = this.convertToLatLong(park.address);
+      debugger
+      return  (      
+      <Marker
+      title={`${park.name}`}
+      name={`${park.name}`}
+      onClick={this.onMarkerClick}
+      position={{ lat: latLong.lat, lng: latLong.lng}} />
+      )
+    })
+  }
+
+  convertToLatLong = (address) => {
+    Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0");
+    Geocode.fromAddress(`${address}`).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location;
-        console.log(lat, lng);
+        return {lat, lng};
       },
-      error => {
-        console.error(error);
-      }
+      // error => {
+      //   console.log('in error now...')
+      //   return ('error');
+      // }
     );
   }
 
-  componentDidMount() {
-    if (this.props.centerAroundCurrentLocation) {
-        if (navigator && navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((pos) => {
-                const coords = pos.coords;
-                this.setState({
-                    currentLocation: {
-                        lat: coords.latitude,
-                        lng: coords.longitude
-                    }
-                })
-            })
-        }
-    }
-    this.loadMap();
-  }
-
-
   render() {
     const style = {
-      width: '100vw',
-      height: '100vh'
+      width: '50%',
+      height: '50%'
     }
     return (
-      <div style={style} className="">
-        <Map google={this.props.google} />
-      </div>
+      <Map
+        google={this.props.google}
+        style={style}
+        initialCenter={{
+          lat: 41.8781,
+          lng: -87.6298
+        }}
+        zoom={15}
+        onClick={this.onMapClicked}
+      >
+
+        {this.renderMarkers()}
+
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+          <div>
+            <h1>{this.state.selectedPlace.name}</h1>
+          </div>
+        </InfoWindow>
+      </Map>
     );
   }
 }
