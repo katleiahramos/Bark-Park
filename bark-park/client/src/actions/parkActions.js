@@ -4,6 +4,9 @@
 // updatePark: (parkEdited) => dispatch({type: "UPDATE_PARK", parkEdited: parkEdited}),
 // checkIn: (parkId) => dispatch({type: "CHECK_IN", parkId})
 
+import Geocode from "react-geocode";
+
+
 
 export function fetchParks() {
     console.log('in fetch parks...')
@@ -18,11 +21,17 @@ export function fetchParks() {
     }
 }
 
-export function postPark(park) {
+
+
+export function postPark(latLong, park) {
     console.log('in postPark with', park);
+    console.log('latLong is', latLong);
+    
     return (dispatch) => {
         dispatch({ type: "BEGIN_BOOKS_REQUEST" })
-        const body = JSON.stringify({ park: { name: park.name, address: park.address, count: 0 } })
+
+       const body = JSON.stringify({ park: { name: park.name, address: park.address, count: 0, lat: latLong.lat, long: latLong.lng } })
+       
         return fetch('/api/parks', {
             method: 'POST',
             headers: { "Content-type": 'application/json' },
@@ -32,6 +41,21 @@ export function postPark(park) {
             .then(parks => dispatch({ type: 'ADD_PARKS', payload: parks }))
     }
 }
+
+export function createPark(park) {
+    return (dispatch) => {
+        dispatch({ type: "BEGIN_BOOKS_REQUEST" })
+
+        Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0");
+        return Geocode.fromAddress(`${park.address}`)
+            .then(resp => resp.results[0].geometry.location)
+            .then(respLatLong => {
+                dispatch(postPark(respLatLong, park))
+            })
+    }
+}
+
+
 
 // TODO: is having dispatch inside the function redundant? 
 // TODO: why do we need dispatch begin books request?

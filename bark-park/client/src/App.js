@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import { fetchParks, postPark, deletePark, updatePark, checkIn} from './actions/parkActions'
+import { fetchParks, createPark, deletePark, updatePark, checkIn} from './actions/parkActions'
 import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem } from "react-materialize";
 import Geocode from "react-geocode";
 
@@ -110,7 +110,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     // addPark: park => dispatch({ type: "ADD_PARK", payload: park }),
-    addPark: (park)=> dispatch(postPark(park)),
+    addPark: (park)=> dispatch(createPark(park)),
     deletePark: parkId => dispatch(deletePark(parkId)),
     editingPark: (park) => dispatch({type: "EDITING_PARK", payload: park}),
     updatePark: (parkEdited) => dispatch(updatePark(parkEdited)),

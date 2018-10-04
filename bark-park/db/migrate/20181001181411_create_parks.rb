@@ -4,6 +4,8 @@ class CreateParks < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :address
       t.integer :count
+      t.string :lat
+      t.string :long
     end
   end
 end

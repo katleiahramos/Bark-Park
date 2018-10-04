@@ -8,7 +8,7 @@ class ParksController < ApplicationController
     end 
 
     def create
-        Park.create(park_params)
+        @park = Park.create(park_params)
         render json: Park.all
     end
 
@@ -25,7 +25,7 @@ class ParksController < ApplicationController
     private 
     
     def park_params
-        params.require(:park).permit(:name, :address, :count)
+        params.require(:park).permit(:name, :address, :count, :lat, :long)
     end
 end
 

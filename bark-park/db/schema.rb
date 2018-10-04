@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 2018_10_01_181411) do
     t.string "name"
     t.string "address"
     t.integer "count"
+    t.string "lat"
+    t.string "long"
   end
 
 end
