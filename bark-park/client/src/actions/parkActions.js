@@ -58,13 +58,13 @@ export function createPark(park) {
 
 
 // TODO: is having dispatch inside the function redundant? 
-// TODO: why do we need dispatch begin books request?
+// TODO: why do we need dispatch begin parks request?
 
 export function deletePark(parkId) {
     console.log('in deletePark with id', parkId);
     return (dispatch) => {
 
-        dispatch({ type: "BEGIN_BOOKS_REQUEST" });
+        dispatch({ type: "BEGIN_PARKS_REQUEST" });
         return fetch(`/api/parks/${parkId}`, {
             method: 'DELETE',
         }).then(() => console.log("park was deleted"))

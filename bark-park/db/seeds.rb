@@ -8,5 +8,5 @@
 
 
 wriggly = Park.create(name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", count: 1, lat: "41.930005", long: "-87.653658 ")
-belmont = Park.create(name: "Belmont Harbor Dog Beach", address: "N Lake Shore Dr & Lake Shore Drive Dr, Chicago, IL 60657", count: 0, lat: "41.261353", long: "-74.948311" )
+belmont = Park.create(name: "Belmont Harbor Dog Beach", address: "3500 N Lake Shore Dr, Chicago, IL 60657", count: 0, lat: "41.261353", long: "-74.948311" )
 logan = Park.create(name: "Logan Square Dog Park", address:"2526 N Western Ave, Chicago, IL 60647", count: 5, lat: "41.917903", long: "-87.687423" )

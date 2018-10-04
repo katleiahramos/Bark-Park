@@ -19,48 +19,10 @@ export class MapContainer extends Component {
     showingInfoWindow: true
   });
 
-  // <Marker
-  // title={'CHI'}
-  // name={'Chicago'}
-  // onClick={this.onMarkerClick}
-  // position={{ lat: 41.8781, lng: -87.6298 }} />
+
+
+
   
-  // convertToLatLong = () => {
-  //   Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0");
-  //   const markers = this.props.parks.map(park => {
-  //     Geocode.fromAddress(`${park.address}`).then(
-  //       response => {
-  //         const { lat, lng } = response.results[0].geometry.location;
-          
-  //         <Marker
-  //         title={`${park.name}`}
-  //         name={`${park.name}`}
-  //         onClick={this.onMarkerClick}
-  //         position={{ lat: lat, lng: lng }} />
-  //       }
-  //     )
-  //   })
-
-
-
-
-      // error => {
-      //   console.log('in error now...')
-      //   return ('error');
-      // }
-
-  // }
-
-
-  // getMarkers = () => {
-  //   const test = this.props.parks.map(park => { 
-  //   Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0");
-  //   Geocode.fromAddress(`${park.address}`)
-  //   .then( resp => resp.results[0].geometry.location)
-  //   .then( latLong => this.renderMarkers(latLong, park))
-  //   })
-    
-  // }
 
   renderMarkers = () => {
     return this.props.parks.map(park => {
@@ -76,22 +38,6 @@ export class MapContainer extends Component {
   }
 
 
-  // convertToLatLong = (address) => {
-  //   Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0");
-  
-  //   Geocode.fromAddress(`${address}`).then(
-  //     response => {
-  //       const { lat, lng } = response.results[0].geometry.location;
-        
-  //       return (lat,lng);
-        
-  //     },
-  //     error => {
-  //       console.log('in error now...')
-  //       return ('error');
-  //     }
-  //   );
-  // }
 
   render() {
     const style = {
