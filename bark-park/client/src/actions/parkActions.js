@@ -6,7 +6,15 @@
 
 import Geocode from "react-geocode";
 
-
+export function addNearByParks(){
+    console.log('in addNearByParks');
+    return(dispatch) => {
+        dispatch({type: 'BEGIN_PARKS_REQUEST'})
+        console.log('fetching near by parks')
+        return (fetch)
+    }
+    
+}
 
 export function fetchParks() {
     console.log('in fetch parks...')

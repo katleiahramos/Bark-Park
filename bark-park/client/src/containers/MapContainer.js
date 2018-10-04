@@ -1,5 +1,4 @@
 import React, { Component }from 'react'
-import Geocode from "react-geocode";
 
 
 // import Map from '../components/Map'
@@ -10,6 +9,10 @@ export class MapContainer extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
+    currentLocation: {
+      lat: 41.936149,
+      lng: -87.656576
+    },
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -18,6 +21,14 @@ export class MapContainer extends Component {
     activeMarker: marker,
     showingInfoWindow: true
   });
+
+  componentDidMount(){
+    navigator.geolocation.getCurrentPosition(pos => {
+      this.setState({
+        currentLocation: {lat: pos.coords.latitude, lng: pos.coords.longitude}
+      })
+    })
+  }
 
 
 
@@ -48,10 +59,7 @@ export class MapContainer extends Component {
       <Map
         google={this.props.google}
         style={style}
-        initialCenter={{
-          lat: 41.936149,
-          lng: -87.656576
-        }}
+        center={this.state.currentLocation}
         zoom={13}
         onClick={this.onMapClicked}
       >
