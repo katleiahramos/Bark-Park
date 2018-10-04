@@ -1,6 +1,6 @@
 import React, { Component }from 'react'
-
-
+import { findNearByParks} from '../actions/parkActions'
+import { connect } from 'react-redux'
 // import Map from '../components/Map'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
@@ -24,11 +24,15 @@ export class MapContainer extends Component {
 
   componentDidMount(){
     navigator.geolocation.getCurrentPosition(pos => {
+      this.props.findNearByParks(pos)
       this.setState({
         currentLocation: {lat: pos.coords.latitude, lng: pos.coords.longitude}
       })
     })
+    
   }
+
+  
 
 
 
@@ -52,9 +56,11 @@ export class MapContainer extends Component {
 
   render() {
     const style = {
-      width: '100%',
-      height: '100%'
+      width: '50%',
+      height: '50%'
     }
+
+    
     return (
       <Map
         google={this.props.google}
@@ -79,8 +85,13 @@ export class MapContainer extends Component {
 }
 
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    findNearByParks: currentLocation => dispatch(findNearByParks(currentLocation))
+  }
+}
 
  
-export default GoogleApiWrapper({
+export default connect(null, mapDispatchToProps)(GoogleApiWrapper({
   apiKey: ("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0")
-})(MapContainer)
+})(MapContainer))

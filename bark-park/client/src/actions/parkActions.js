@@ -6,15 +6,34 @@
 
 import Geocode from "react-geocode";
 
-export function addNearByParks(){
+
+export function findNearByParks(currentLocation) {
+
     console.log('in addNearByParks');
-    return(dispatch) => {
-        dispatch({type: 'BEGIN_PARKS_REQUEST'})
+    const { lat, lng } = { lat: currentLocation.coords.latitude, lng: currentLocation.coords.longitude }
+
+    return (dispatch) => {
+        const secret = ""
+        const id = ""
+        dispatch({ type: 'BEGIN_PARKS_REQUEST' })
         console.log('fetching near by parks')
-        return (fetch)
+
+        return fetch(`https://api.foursquare.com/v2/venues/search?ll=${lat},${lng}&query=dog+park&limit=5&client_id=${id}&client_secret=${secret}&v=20181004`)
+            .then(resp => resp.json())
+            .then(results => {
+                const parks = results.response.venues
+                for (const park of parks) {
+                    
+                    dispatch({
+                        type: "ADD_NEAR_BY",
+                        payload: {name: park.name, address: park.location.address, lat: park.location.lat, long: park.location.lng}
+                    })
+                }
+            })
+            
     }
-    
 }
+
 
 export function fetchParks() {
     console.log('in fetch parks...')
@@ -36,7 +55,7 @@ export function postPark(latLong, park) {
     console.log('latLong is', latLong);
     
     return (dispatch) => {
-        dispatch({ type: "BEGIN_BOOKS_REQUEST" })
+        dispatch({ type: "BEGIN_PARKS_REQUEST" })
 
        const body = JSON.stringify({ park: { name: park.name, address: park.address, count: 0, lat: latLong.lat, long: latLong.lng } })
        
@@ -45,14 +64,14 @@ export function postPark(latLong, park) {
             headers: { "Content-type": 'application/json' },
             body: body,
         })
-            .then(resp => resp.json())
+            .then(resp => { resp.json()})
             .then(parks => dispatch({ type: 'ADD_PARKS', payload: parks }))
     }
 }
 
 export function createPark(park) {
     return (dispatch) => {
-        dispatch({ type: "BEGIN_BOOKS_REQUEST" })
+        dispatch({ type: "BEGIN_PARKS_REQUEST" })
 
         Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0");
         return Geocode.fromAddress(`${park.address}`)
