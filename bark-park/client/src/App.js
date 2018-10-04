@@ -60,7 +60,7 @@ class App extends Component {
           <Route exact path="/about" component={About} />
         </Router>
 
-        <Navbar brand="Bark Park" right fluid>
+        <Navbar brand="Bark Park" right>
                   <Modal
           header="Add Park"
           trigger={

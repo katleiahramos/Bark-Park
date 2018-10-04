@@ -52,27 +52,29 @@ export class MapContainer extends Component {
   // }
 
 
-  getMarkers = () => {
-    const test = this.props.parks.map(park => { 
-    Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0");
-    Geocode.fromAddress(`${park.address}`)
-    .then( resp => resp.results[0].geometry.location)
-    .then( latLong => this.renderMarkers(latLong, park))
-    })
+  // getMarkers = () => {
+  //   const test = this.props.parks.map(park => { 
+  //   Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0");
+  //   Geocode.fromAddress(`${park.address}`)
+  //   .then( resp => resp.results[0].geometry.location)
+  //   .then( latLong => this.renderMarkers(latLong, park))
+  //   })
     
+  // }
+
+  renderMarkers = () => {
+    return this.props.parks.map(park => {
+      return (
+      <Marker 
+        key={park.id}
+        title={`${park.name}`}
+        name={`${park.name}`}
+        onClick={this.onMarkerClick}
+        position={{ lat: parseFloat(park.lat), lng: parseFloat(park.long)}}>
+      </Marker>);
+    })
   }
 
-  renderMarkers = (latLong, park) => {
-    return (<Marker title=
-      {`${park.name}`}
-      name=
-      {`${park.name}`}
-      onClick=
-      {this.onMarkerClick}
-      position=
-      {{ lat: latLong.lat, lng: latLong.lng }}>
-    </Marker>);
-  }
 
   // convertToLatLong = (address) => {
   //   Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0");
@@ -93,22 +95,22 @@ export class MapContainer extends Component {
 
   render() {
     const style = {
-      width: '50%',
-      height: '50%'
+      width: '100%',
+      height: '100%'
     }
     return (
       <Map
         google={this.props.google}
         style={style}
         initialCenter={{
-          lat: 41.8781,
-          lng: -87.6298
+          lat: 41.936149,
+          lng: -87.656576
         }}
-        zoom={15}
+        zoom={13}
         onClick={this.onMapClicked}
       >
 
-        {this.getMarkers()}
+        {this.renderMarkers()}
 
         <InfoWindow
           marker={this.state.activeMarker}
