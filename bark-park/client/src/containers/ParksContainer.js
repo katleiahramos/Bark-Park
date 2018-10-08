@@ -5,7 +5,7 @@ import Parks from '../components/Parks'
 class ParksContainer extends Component {
 
   render(){
-    return <div>
+    return <div className="Parks-container">
         <Parks 
           deletePark={this.props.deletePark}
           editPark={this.props.editPark} 

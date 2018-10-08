@@ -16,8 +16,7 @@ export default function parkReducer(
       return state 
     case 'ADD_PARKS':
       console.log('ADD_PARKS is returning..',{parks: action.payload} );
-      
-      return {parks: action.payload}
+      return { parks: action.payload}
     case "ADD_NEAR_BY":
       console.log(action.payload); //{name: "test", address: "test"}
       const park = { ...action.payload, id: cuid(), count: 0 }; //{name: "test", address: "test", id: "cjmkq4hx100003b5x1m6mdqyu", count: 0}

@@ -58,13 +58,13 @@ export function postPark(latLong, park) {
         dispatch({ type: "BEGIN_PARKS_REQUEST" })
 
        const body = JSON.stringify({ park: { name: park.name, address: park.address, count: 0, lat: latLong.lat, long: latLong.lng } })
-       
+    
         return fetch('/api/parks', {
             method: 'POST',
             headers: { "Content-type": 'application/json' },
             body: body,
         })
-            .then(resp => { resp.json()})
+            .then(resp => resp.json())
             .then(parks => dispatch({ type: 'ADD_PARKS', payload: parks }))
     }
 }
@@ -77,6 +77,7 @@ export function createPark(park) {
         return Geocode.fromAddress(`${park.address}`)
             .then(resp => resp.results[0].geometry.location)
             .then(respLatLong => {
+                
                 dispatch(postPark(respLatLong, park))
             })
     }

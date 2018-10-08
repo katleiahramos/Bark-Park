@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import { fetchParks, createPark, deletePark, updatePark, checkIn} from './actions/parkActions'
-import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem } from "react-materialize";
+import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem, Row, Col} from "react-materialize";
 import Geocode from "react-geocode";
 
 import ParksContainer from "./containers/ParksContainer";
@@ -81,17 +81,22 @@ class App extends Component {
         
 
         {modalForm}
+        <Row>
+          <Col s={6}> 
+          <ParksContainer
+            deletePark={this.props.deletePark}
+            editPark={this.editPark}
+            parks={this.props.parks}
+            checkIn={this.checkIn}
+            
+          />
+          </Col>
 
-        <ParksContainer
-          deletePark={this.props.deletePark}
-          editPark={this.editPark}
-          parks={this.props.parks}
-          checkIn={this.checkIn}
-        />
 
-        
-        <MapContainer parks={this.props.parks} />
-
+        <Col s={6}>
+        <MapContainer s={6} parks={this.props.parks} />
+        </Col>
+      </Row> 
 
 
       </div>

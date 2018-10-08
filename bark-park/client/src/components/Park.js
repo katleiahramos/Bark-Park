@@ -85,7 +85,7 @@ const Park = ({ parkInfo, deletePark, editPark, checkIn }) => {
 
   // TODO: menu should be a circle menu button user clicks on and then all options populate around button
   return (
-    <Col s={3}>
+    <Col s={6}>
       <Card title={parkInfo.name} className="teal lighten-5">
         <p>Count: {parkInfo.count}</p>
 
