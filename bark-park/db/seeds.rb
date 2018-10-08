@@ -5,7 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+admin = User.new
+admin.email = 'kat-admin@test.com'
+admin.username = 'kat-admin'
+admin.password = 'password'
+admin.password_confirmation = 'password'
+admin.admin = true
+admin.save
 
+user = User.new
+user.email = 'kat@test.com'
+user.username = 'kat'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.save
 
 wriggly = Park.create(name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", count: 1, lat: "41.930005", long: "-87.653658 ")
 belmont = Park.create(name: "Belmont Harbor Dog Beach", address: "3500 N Lake Shore Dr, Chicago, IL 60657", count: 0, lat: "41.261353", long: "-74.948311" )
