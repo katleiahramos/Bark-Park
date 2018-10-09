@@ -1,3 +1,5 @@
+require 'pry'
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
@@ -15,10 +17,10 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
+    @user = User.new(username: params["username"], password: params["password"])
+    
     if @user.save
-      render :show, status: :created, location: @user
+      render json: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -48,6 +50,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :username, :password_digest, :admin)
+      params.require(:user).permit( :username, :password, :admin)
     end
 end

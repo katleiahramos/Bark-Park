@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2018_10_08_185929) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
     t.string "username"
     t.string "password_digest"
     t.boolean "admin", default: false

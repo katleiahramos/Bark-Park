@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     scope :api do 
     # get '/api/parks', to: "parks#index"
     # get :parks, to: "parks#index"
+    post '/users', to: 'users#create'
+    post '/login', to: "auth#create"
+    get '/welcome', to: "application#welcome"
     post 'user_token', to: 'user_token#create'
     post '/api/parks', to: "parks#create"
     resources :parks

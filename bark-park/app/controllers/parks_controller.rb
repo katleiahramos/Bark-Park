@@ -1,11 +1,14 @@
 require 'pry'
 
+
 class ParksController < ApplicationController 
-    before_action :authenticate_user
+    before_action :authorized, only: [:index]
 
     def index
+
         @parks = Park.all 
         render json: @parks
+
     end 
 
     def create

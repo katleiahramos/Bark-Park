@@ -17,6 +17,12 @@ import MapContainer from "./containers/MapContainer"
 
 class App extends Component {
 
+  componentDidMount(){
+    
+  }
+
+
+  // TODO: refactor code below 
   editPark = parkId => {
     const parkToEdit = this.props.parks.find(park => park.id === parkId);
     this.props.editingPark(parkToEdit)
