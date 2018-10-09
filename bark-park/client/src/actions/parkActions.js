@@ -6,27 +6,9 @@
 
 import Geocode from "react-geocode";
 
-export function login(email, username, password) {
-    return (dispatch) => {
-        dispatch({ type: 'BEGIN_PARKS_REQUEST' })
-        const request = { "auth": { "email": email, "username": username, "password": password } }
-        return fetch('/api/user_token', {
-            type: "POST",
-            data: request,
-            dataType: "json",
-        }).then(resp => console.log(resp.json()))
-            .then(test => {
-                debugger
-            })
-    }
-}
 
 
-// success: function (result) {
-//     debugger
-//     console.log(result)
-//     localStorage.setItem("jwt", result.jwt)
-//   }
+
 
 export function findNearByParks(currentLocation) {
 
@@ -62,7 +44,9 @@ export function fetchParks() {
         dispatch({ type: 'BEGIN_PARKS_REQUEST' })
         console.log('fetching parks')
         return fetch('/api/parks', {
-            accept: 'application/json'
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("jwtToken")}
         })
             .then(resp => resp.json())
             .then(parks => dispatch({ type: 'ADD_PARKS', payload: parks }))

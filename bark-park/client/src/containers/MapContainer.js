@@ -24,7 +24,8 @@ export class MapContainer extends Component {
 
   componentDidMount(){
     navigator.geolocation.getCurrentPosition(pos => {
-      this.props.findNearByParks(pos)
+      // TODO: Uncomment find near by parks after completing user auth
+      // this.props.findNearByParks(pos)
       this.setState({
         currentLocation: {lat: pos.coords.latitude, lng: pos.coords.longitude}
       })

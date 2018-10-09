@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import { fetchParks, createPark, deletePark, updatePark, checkIn} from './actions/parkActions'
-import { Navbar, NavItem, Icon, Modal, SideNav, SideNavItem, Button, Collapsible, CollapsibleItem, Row, Col} from "react-materialize";
-import Geocode from "react-geocode";
+import { Navbar, NavItem, Modal, Row, Col} from "react-materialize";
+
 
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
@@ -16,10 +16,6 @@ import MapContainer from "./containers/MapContainer"
 
 
 class App extends Component {
-
-  componentDidMount(){
-    
-  }
 
 
   // TODO: refactor code below 
@@ -38,6 +34,11 @@ class App extends Component {
   }
 
   componentDidMount(){
+    // fetch("/api/welcome")
+    // .then(resp => resp.json())
+    // .then(json =>{
+    //   console.log(json)
+    // })
     this.props.fetchParks();
   }
 
@@ -147,49 +148,3 @@ export default connect(
   mapDispatchToProps
 )(App);
 
-
-{/* <Modal
-header="Add Park"
-trigger={
-  <SideNavItem 
-    href='#!icon' 
-    icon='add_circle_outline'>
-      Add New Park
-  </SideNavItem>
-}
->
-<ParkForm addPark={this.props.addPark} />
-</Modal> */}
-
-
-{/* <SideNav
-options={{ closeOnClick: true }}
-trigger={<NavItem><Button>Your Parks</Button></NavItem>}
-className=""
->
-<SideNavItem userView 
-  user={{
-    background: '/grassbackground_small.jpg',
-    image: '/barkparkicon.jpg',
-    name: 'John Doe',
-    email: 'jdandturk@gmail.com'
-  }}
-/>
-
-
-
-<SideNavItem href='/'>Home</SideNavItem>
-<SideNavItem href='/about'>About BarkPark</SideNavItem>
-
-<SideNavItem divider />
-<Collapsible>
-  <CollapsibleItem header="Add New Park" icon="add_circle_outline">
-    <ParkForm addPark={this.props.addPark} />
-  </CollapsibleItem>
-</Collapsible>
-
-
-<SideNavItem divider />
-<SideNavItem subheader>Saved Parks</SideNavItem>
-
-</SideNav> */}

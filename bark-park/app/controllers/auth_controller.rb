@@ -10,7 +10,7 @@ class AuthController < ApplicationController
     end
 
     def me 
-        
+
         #now that we have user ID, we can find that user
         # this is our current user now 
         
