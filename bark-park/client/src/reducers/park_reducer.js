@@ -15,11 +15,7 @@ export default function parkReducer(
     case 'BEING_PARKS_REQUEST':
       console.log('sending request...');
       return state
-    case 'LOGIN':
-      return {...state, loggedIn: true}
-    case 'LOGOUT':
-      console.log("in LOGOUT returning", {...state, loggedIn: true});
-      return {...state, loggedIn: false}
+
     case 'ADD_PARKS':
       console.log('ADD_PARKS is returning..', { parks: action.payload });
       return { parks: action.payload }
