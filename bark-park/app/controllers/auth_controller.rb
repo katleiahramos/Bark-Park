@@ -6,6 +6,8 @@ class AuthController < ApplicationController
             #Confirms user exists and password matches 
             token = encode_token( user_id: user.id)
             render json: {user: user, jwt: token} 
+        else 
+            render json: {error: "user not found"}
         end
     end
 
