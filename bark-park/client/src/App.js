@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import { fetchParks, createPark, deletePark, updatePark, checkIn} from './actions/parkActions'
 import { Navbar, NavItem, Modal, Row, Col} from "react-materialize";
-
+import {Redirect } from 'react-router-dom';
 
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
@@ -34,11 +34,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    // fetch("/api/welcome")
-    // .then(resp => resp.json())
-    // .then(json =>{
-    //   console.log(json)
-    // })
     this.props.fetchParks();
   }
 
@@ -60,54 +55,61 @@ class App extends Component {
       : null
     )
 
-    return (
-      <div className="App ">
-        <Router>
-          {/* <Route exact path="/" component={Home} /> */}
-          <Route exact path="/about" component={About} />
-        </Router>
-
-        <Navbar brand="Bark Park" right>
-                  <Modal
-          header="Add Park"
-          trigger={
-            <NavItem
-              href='#!icon'
-              icon="add_circle">
-              Add Park
-            </NavItem>
-          }
-          >
-          <ParkForm addPark={this.props.addPark} />
-          </Modal>
-
-          
-
-        </Navbar>
-
-        
-
-        {modalForm}
-        <Row>
-          <Col s={6}> 
-          <ParksContainer
-            deletePark={this.props.deletePark}
-            editPark={this.editPark}
-            parks={this.props.parks}
-            checkIn={this.checkIn}
+    if (localStorage.getItem("jwtToken") !== "undefined") {
+      // logged-in
+      return (
+        <div className="App ">
+          <Router>
+            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path="/about" component={About} />
+          </Router>
+  
+          <Navbar brand="Bark Park" right>
+                    <Modal
+            header="Add Park"
+            trigger={
+              <NavItem
+                href='#!icon'
+                icon="add_circle">
+                Add Park
+              </NavItem>
+            }
+            >
+            <ParkForm addPark={this.props.addPark} />
+            </Modal>
+  
             
-          />
+  
+          </Navbar>
+  
+          
+  
+          {modalForm}
+          <Row>
+            <Col s={6}> 
+            <ParksContainer
+              deletePark={this.props.deletePark}
+              editPark={this.editPark}
+              parks={this.props.parks}
+              checkIn={this.checkIn}
+              
+            />
+            </Col>
+  
+  
+          <Col s={6}>
+          <MapContainer s={6} parks={this.props.parks} />
           </Col>
-
-
-        <Col s={6}>
-        <MapContainer s={6} parks={this.props.parks} />
-        </Col>
-      </Row> 
-
-
-      </div>
-    );
+        </Row> 
+  
+  
+        </div>
+      );
+    } else {
+      // not logged-in 
+      return <Redirect to="/login" />
+    }
+    
   }
 }
 
