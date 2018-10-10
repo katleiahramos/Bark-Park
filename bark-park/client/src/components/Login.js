@@ -24,17 +24,7 @@ class Login extends Component {
             .then(user => {
                 localStorage.setItem("jwtToken", user.jwt)
             })
-        // const loginParams = {username: this.state.username , password: this.state.password}
-        // const body = JSON.stringify(loginParams)
-        // fetch("/api/login", {
-        //     method: 'post',
-        //     body: body,
-        //     headers: { "Content-type": 'application/json' },
-        // })
-        //     .then( resp => resp.json())
-        //     .then(json => {
-        //         console.log(json)
-        //     })
+
 
         this.setState({
             username: "",
