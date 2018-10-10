@@ -75,7 +75,7 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     // return {
-    //     login: (username, password) => dispatch(login(username, password))
+    //     loginUser: () => loginUser()
     // }
 }
 

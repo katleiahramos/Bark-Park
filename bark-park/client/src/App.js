@@ -35,6 +35,14 @@ class App extends Component {
     this.props.checkIn(park)
   }
 
+  handleLogOut = () => {
+    this.props.logoutUser()
+    this.setState({
+      
+    })
+ 
+  }
+
   componentDidMount(){
     this.props.fetchParks();
   }
@@ -57,7 +65,7 @@ class App extends Component {
       : null
     )
 
-    if (localStorage.getItem("jwtToken") !== "undefined") {
+    if (localStorage.getItem("jwtToken") !== "undefined" && localStorage.getItem("jwtToken") !== null ) {
       // logged-in
       return (
         <div className="App ">
@@ -82,7 +90,7 @@ class App extends Component {
               <ParkForm addPark={this.props.addPark} />
             </Modal>
 
-          <NavItem onClick={logoutUser()} >Log Out</NavItem>
+          <NavItem onClick={this.handleLogOut} >Log Out</NavItem>
 
             
   
@@ -125,7 +133,8 @@ const mapStateToProps = state => {
   return { 
     parks: state.parkReducer.parks, 
     editing: state.parkReducer.editingParks, 
-    parkToEdit: state.parkReducer.parkToEdit
+    parkToEdit: state.parkReducer.parkToEdit,
+    loggedIn: state.parkReducer.loggedIn
   };
 };
 
@@ -138,6 +147,7 @@ const mapDispatchToProps = dispatch => {
     updatePark: (parkEdited) => dispatch(updatePark(parkEdited)),
     checkIn: (park) => dispatch(checkIn(park)), 
     fetchParks: ()=>dispatch(fetchParks()),
+    logoutUser: ()=>logoutUser()
   };
 };
 
