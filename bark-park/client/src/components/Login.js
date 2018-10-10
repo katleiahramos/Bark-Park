@@ -23,19 +23,22 @@ class Login extends Component {
         loginUser(loginParams)
             .then(user => {
                 localStorage.setItem("jwtToken", user.jwt)
+                // import to set state here so it rerenders component to make the redirect 
+                this.setState({
+                    username: "",
+                    password: ""
+                })
             })
 
 
-        this.setState({
-            username: "",
-            password: ""
-        })
+
     }
 
 
 
     render() {
-        if (localStorage.getItem("jwtToken")) {
+        // TODO: handle incorrect username/password
+        if (localStorage.getItem("jwtToken") !== "undefined" &&  localStorage.getItem("jwtToken") !== null) {
             return <Redirect to="/app" />
         } else {
             return (
