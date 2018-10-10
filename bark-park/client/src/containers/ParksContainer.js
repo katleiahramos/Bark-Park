@@ -3,7 +3,9 @@ import Parks from '../components/Parks'
 // import { connect } from 'react-redux'
 
 class ParksContainer extends Component {
-
+  componentDidMount(){
+    this.props.fetchParks();
+  }
   render(){
     return <div className="Parks-container">
         <Parks 

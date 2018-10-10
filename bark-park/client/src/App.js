@@ -7,7 +7,7 @@ import { Navbar, NavItem, Modal, Row, Col, Button} from "react-materialize";
 import {Redirect } from 'react-router-dom';
 
 import {logoutUser} from './actions/userActions'
-
+import Login from './components/Login'
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
 import MapContainer from "./containers/MapContainer"
@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.props.fetchParks();
+    // this.props.fetchParks();
   }
 
   
@@ -65,14 +65,14 @@ class App extends Component {
       : null
     )
 
-    if (localStorage.getItem("jwtToken") !== "undefined" && localStorage.getItem("jwtToken") !== null ) {
+    if ( localStorage.getItem("jwtToken") !== "undefined" && localStorage.getItem("jwtToken") !== null ) {
       // logged-in
       return (
         <div className="App ">
-          <Router>
+
             {/* <Route exact path="/" component={Home} /> */}
-            <Route exact path="/about" component={About} />
-          </Router>
+            {/* <Route path="/" component={Nav} /> */}
+
   
           <Navbar brand="Bark Park" right>
           
@@ -90,7 +90,7 @@ class App extends Component {
               <ParkForm addPark={this.props.addPark} />
             </Modal>
 
-          <NavItem onClick={this.handleLogOut} >Log Out</NavItem>
+          <NavItem onClick={this.handleLogOut}>Log Out</NavItem>
 
             
   
@@ -108,6 +108,7 @@ class App extends Component {
               editPark={this.editPark}
               parks={this.props.parks}
               checkIn={this.checkIn}
+              fetchParks={this.props.fetchParks}
               
             />
             </Col>
@@ -122,8 +123,7 @@ class App extends Component {
         </div>
       );
     } else {
-      // not logged-in 
-      return <Redirect to="/login" />
+       return <Redirect to="/login" />
     }
     
   }
@@ -134,7 +134,8 @@ const mapStateToProps = state => {
     parks: state.parkReducer.parks, 
     editing: state.parkReducer.editingParks, 
     parkToEdit: state.parkReducer.parkToEdit,
-    loggedIn: state.parkReducer.loggedIn
+    // loggedIn: state.userReducer.loggedIn,
+    // currentUser: state.userReducer.currentUser,
   };
 };
 
