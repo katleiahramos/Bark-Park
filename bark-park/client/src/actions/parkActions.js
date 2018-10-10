@@ -39,6 +39,7 @@ export function findNearByParks(currentLocation) {
 
 
 export function fetchParks() {
+    // TODO: ADD SOME AUTHORIZATION PROTECTION HERE 
     console.log('in fetch parks...')
     return (dispatch) => {
         dispatch({ type: 'BEGIN_PARKS_REQUEST' })
@@ -47,7 +48,7 @@ export function fetchParks() {
             headers: {
                 "Content-type": "application/json",
                 "Authorization": "Bearer " + localStorage.getItem("jwtToken")}
-        })
+        }) 
             .then(resp => resp.json())
             .then(parks => dispatch({ type: 'ADD_PARKS', payload: parks }))
     }
