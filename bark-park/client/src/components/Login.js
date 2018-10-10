@@ -20,15 +20,16 @@ class Login extends Component {
     handleOnSubmit = (event) => {
         event.preventDefault();
         const loginParams = { username: this.state.username, password: this.state.password }
-        loginUser(loginParams)
-            .then(user => {
-                localStorage.setItem("jwtToken", user.jwt)
-                // import to set state here so it rerenders component to make the redirect 
-                this.setState({
-                    username: "",
-                    password: ""
-                })
-            })
+        this.props.loginUser(loginParams)
+            .then( () => this.setState({
+                username: "",
+                password: ""
+            }) )
+            // .then(user => {
+            //     localStorage.setItem("jwtToken", user.jwt)
+            //     // import to set state here so it rerenders component to make the redirect 
+
+            // })
 
 
 
@@ -38,7 +39,7 @@ class Login extends Component {
 
     render() {
         // TODO: handle incorrect username/password
-        if (localStorage.getItem("jwtToken") !== "undefined" &&  localStorage.getItem("jwtToken") !== null) {
+        if (localStorage.getItem("jwtToken") !== "undefined" && localStorage.getItem("jwtToken") !== null) {
             return <Redirect to="/app" />
         } else {
             return (
@@ -73,10 +74,16 @@ class Login extends Component {
     }
 }
 
+// const mapStateToProps = state => {
+//     return {
+//         loggedIn: state.userReducer.loggedIn,
+//         currentUser: state.userReducer.currentUser
+//     }
+// }
 const mapDispatchToProps = (dispatch) => {
-    // return {
-    //     loginUser: () => loginUser()
-    // }
+    return {
+        loginUser: (loginParams) => dispatch(loginUser(loginParams))
+    }
 }
 
 export default connect(null, mapDispatchToProps)(Login)
