@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import { fetchParks, createPark, deletePark, updatePark, checkIn} from './actions/parkActions'
-import { Navbar, NavItem, Modal, Row, Col} from "react-materialize";
+import { Navbar, NavItem, Modal, Row, Col, Button} from "react-materialize";
 import {Redirect } from 'react-router-dom';
+
+import {logoutUser} from './actions/userActions'
 
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
@@ -65,18 +67,24 @@ class App extends Component {
           </Router>
   
           <Navbar brand="Bark Park" right>
-                    <Modal
-            header="Add Park"
-            trigger={
-              <NavItem
-                href='#!icon'
-                icon="add_circle">
-                Add Park
+          
+
+            <Modal
+              header="Add Park"
+              trigger={
+                <NavItem
+                  href='#!icon'
+                  icon="add_circle">
+                  Add Park
               </NavItem>
-            }
+              }
             >
-            <ParkForm addPark={this.props.addPark} />
+              <ParkForm addPark={this.props.addPark} />
             </Modal>
+
+          <NavItem onClick={logoutUser()} >Log Out</NavItem>
+
+            
   
             
   
