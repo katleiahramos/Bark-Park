@@ -122,7 +122,25 @@ export function updatePark(park) {
 }
 
 export function checkIn(park){
-    const parkCheckedIn = {...park, count: ++park.count }
-    return (dispatch)=>{dispatch(updatePark(parkCheckedIn))};
+    
+    // OLD CODE 
+    // const parkCheckedIn = {...park, count: ++park.count }
+    // return (dispatch)=>{dispatch(updatePark(parkCheckedIn))};
+
+    // NEW CODE: uses fetch request to create a checkin 
+    // data sent -> Username, park 
+    return(dispatch)=>{
+        dispatch({type: "BEGIN_PARKS_REQUEST"})
+        const body = JSON.stringify({parkname: park.name, username: localStorage.getItem("currentUser")})
+        return fetch('/api/checkins', {
+            method: 'POST',
+            body: body, 
+            headers: {"Content-type": 'application/json' }
+        })
+        .then(resp=>resp.json())
+        .then(checkin=>{
+            debugger
+        })
+    }
 }
 
