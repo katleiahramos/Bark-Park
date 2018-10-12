@@ -26,8 +26,8 @@ class ParksController < ApplicationController
 
     def current_users
         @park = Park.find(params[:id])
-        @users =  @park.users.current
-        render json: @users
+        @current_users =  @park.checkins.active.map{ |checkin| checkin.user.username}
+        render json: @current_users
     end 
 
     private 
