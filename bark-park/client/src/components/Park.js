@@ -1,85 +1,12 @@
 import { Card, Col, Button, Modal, Dropdown } from "react-materialize";
 import React from "react";
 
-// ////////////// Class version
 
-// class Park extends Component {
-//   state = {
-//     editing: false
-//   }
-
-//   handleEditClick = () => {
-//     this.setState({
-//       editing: true
-//     })
-//   }
-
-//   parkCard = (
-//     <Col s={3}>
-//       <Card title={parkInfo.name}>
-//         <p>Count: {parkInfo.count}</p>
-//       </Card>
-//     </Col>
-//   );
-
-//   modalContent = () => {
-//     if (this.state.editing) {
-//       return <ParkForm />
-//     } else {
-//       return (
-//         <React.Fragment>
-//           <h5>Address: {parkInfo.address}</h5>
-//           <h5>Count: {parkInfo.count}</h5>
-//           <Button onClick={() => deletePark(parkInfo.id)} waves="light">
-//             <Icon>delete</Icon>
-//           </Button>
-//           <Button onClick={() => editPark(parkInfo.id)} waves="light">
-//             <Icon>edit</Icon>
-//           </Button>
-//         </React.Fragment>
-//       )
-//     }
-
-//   }
-
-//   render(){
-//     return (
-
-//       <Modal trigger={this.parkCard} header={parkInfo.name}>
-//         <h5>Address: {parkInfo.address}</h5>
-//         <h5>Count: {parkInfo.count}</h5>
-//         <Button onClick={() => deletePark(parkInfo.id)} waves="light">
-//           <Icon>delete</Icon>
-//         </Button>
-//         <Button onClick={() => editPark(parkInfo.id)} waves="light">
-//           <Icon>edit</Icon>
-//         </Button>
-//       </Modal>
-
-//     );
-//   }
-// }
-
-// export default Park;
-
-/////////////////// END:  CLASS ////////////////
 
 const Park = ({ parkInfo, deletePark, editPark, checkIn }) => {
   // parkInfo =>  {name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", id: "cjmkvc3xu00023b5t4t1z4aq1", count: 1}
 
-  // const parkCard = (
-  //   <Col s={3}>
-  //     <Card title={parkInfo.name}>
-  //       <p>Count: {parkInfo.count}</p>
-  //       <Button onClick={() => deletePark(parkInfo.id)} waves="light">
-  //         <Icon>delete</Icon>
-  //       </Button>
-  //       <Button onClick={() => editPark(parkInfo.id)} waves="light">
-  //         <Icon>edit</Icon>
-  //       </Button>
-  //     </Card>
-  //   </Col>
-  // );
+
 
   // TODO: maybe use ROUTES here to make certain modals appear.
 
@@ -87,7 +14,7 @@ const Park = ({ parkInfo, deletePark, editPark, checkIn }) => {
   return (
     <Col s={6}>
       <Card title={parkInfo.name} className="teal lighten-5">
-        <p>Count: {parkInfo.count}</p>
+        <p><Button icon="nature_people" floating />Count: {parkInfo.count}</p>
 
         <Dropdown trigger={<Button floating icon="more_horiz" />}>
           <Modal
@@ -113,7 +40,7 @@ const Park = ({ parkInfo, deletePark, editPark, checkIn }) => {
         </Dropdown>
         <Button
           floating
-          icon="check_circle"
+          icon="check_circle_outline"
           onClick={() => checkIn(parkInfo)}
         />
       </Card>
