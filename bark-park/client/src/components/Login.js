@@ -43,7 +43,8 @@ class Login extends Component {
             return <Redirect to="/app" />
         } else {
             return (
-                <div>
+                <div className="Login-Form z-depth-5">
+                    <h4>Log In</h4><br/>
                     <form onSubmit={this.handleOnSubmit}>
                         <Input
 
@@ -62,7 +63,7 @@ class Login extends Component {
                             onChange={this.handleOnChange}
                             name="password"
                             value={this.state.password}
-                        />
+                        /><br></br>
 
                         <Button type="submit" icon="">Submit</Button>
                     </form>
