@@ -10,8 +10,8 @@ import {logoutUser} from './actions/userActions'
 import Login from './components/Login'
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
-import MapContainer from "./containers/MapContainer"
-
+import MapContainer from "./containers/MapContainer";
+import Nav from './components/Nav';
 
 // TODO: NavBar, logo only correct aligned when using left
 
@@ -70,36 +70,8 @@ class App extends Component {
       return (
         <div className="App ">
 
-            {/* <Route exact path="/" component={Home} /> */}
-            {/* <Route path="/" component={Nav} /> */}
+          <Nav addPark={this.props.addPark} handleLogOut={this.handleLogOut}/>
 
-  
-          <Navbar brand="Bark Park" right>
-          
-
-            <Modal
-              header="Add Park"
-              trigger={
-                <NavItem
-                  href='#!icon'
-                  icon="add_circle">
-                  Add Park
-              </NavItem>
-              }
-            >
-              <ParkForm addPark={this.props.addPark} />
-            </Modal>
-
-          <NavItem onClick={this.handleLogOut}>Log Out</NavItem>
-
-            
-  
-            
-  
-          </Navbar>
-  
-          
-  
           {modalForm}
           <Row>
             <Col s={6}> 
@@ -134,8 +106,8 @@ const mapStateToProps = state => {
     parks: state.parkReducer.parks, 
     editing: state.parkReducer.editingParks, 
     parkToEdit: state.parkReducer.parkToEdit,
-    // loggedIn: state.userReducer.loggedIn,
-    // currentUser: state.userReducer.currentUser,
+    loggedIn: state.userReducer.loggedIn,
+    currentUser: state.userReducer.currentUser,
   };
 };
 
@@ -150,7 +122,7 @@ const mapDispatchToProps = dispatch => {
     fetchParks: ()=>dispatch(fetchParks()),
     logoutUser: ()=>logoutUser()
   };
-};
+}; 
 
 const Home = () => (
   <div>
