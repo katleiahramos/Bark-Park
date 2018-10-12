@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import { fetchParks, createPark, deletePark, updatePark, checkIn} from './actions/parkActions'
+import { fetchParks, createPark, deletePark, updatePark, checkIn, fetchCurrentUsers} from './actions/parkActions'
 import { Navbar, NavItem, Modal, Row, Col, Button} from "react-materialize";
 import {Redirect } from 'react-router-dom';
 
@@ -73,21 +73,22 @@ class App extends Component {
           <Nav addPark={this.props.addPark} handleLogOut={this.handleLogOut}/>
 
           {modalForm}
+
           <Row>
             <Col s={6}> 
-            <ParksContainer
-              deletePark={this.props.deletePark}
-              editPark={this.editPark}
-              parks={this.props.parks}
-              checkIn={this.checkIn}
-              fetchParks={this.props.fetchParks}
-              
-            />
+              <ParksContainer
+                deletePark={this.props.deletePark}
+                editPark={this.editPark}
+                parks={this.props.parks}
+                checkIn={this.checkIn}
+                fetchParks={this.props.fetchParks}
+                fetchCurrentUsers={this.props.fetchCurrentUsers}
+              />
             </Col>
   
   
           <Col s={6}>
-          <MapContainer s={6} parks={this.props.parks} />
+            <MapContainer s={6} parks={this.props.parks} />
           </Col>
         </Row> 
   
@@ -120,7 +121,8 @@ const mapDispatchToProps = dispatch => {
     updatePark: (parkEdited) => dispatch(updatePark(parkEdited)),
     checkIn: (park) => dispatch(checkIn(park)), 
     fetchParks: ()=>dispatch(fetchParks()),
-    logoutUser: ()=>logoutUser()
+    logoutUser: ()=>logoutUser(),
+    fetchCurrentUsers: (parkId)=>dispatch(fetchCurrentUsers(parkId))
   };
 }; 
 
