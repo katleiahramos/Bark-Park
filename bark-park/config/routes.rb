@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       # post '/api/parks', to: "parks#create"
       resources :checkins
       resources :parks
+
+      get '/parks/:id/current', to: 'parks#current_users'
     end 
 
 end

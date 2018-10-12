@@ -5,10 +5,8 @@ class ParksController < ApplicationController
     before_action :authorized, only: [:index]
 
     def index
-
         @parks = Park.all 
         render json: @parks
-
     end 
 
     def create
@@ -25,6 +23,12 @@ class ParksController < ApplicationController
         @park = Park.find(params[:id])
         @park.update(park_params)
     end
+
+    def current_users
+        @park = Park.find(params[:id])
+        @users =  @park.users.current
+        render json: @users
+    end 
 
     private 
     
