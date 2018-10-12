@@ -12,7 +12,7 @@ export default function userReducer(
             return { loggedIn: true, currentUser: action.payload .user }
         case 'LOGOUT':
             console.log("in LOGOUT returning", { ...state, loggedIn: true });
-            return state
+            return { ...state, loggedIn: true }
         default:
             return state;
     }

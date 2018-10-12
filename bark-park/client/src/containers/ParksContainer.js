@@ -6,6 +6,8 @@ class ParksContainer extends Component {
   componentDidMount(){
     this.props.fetchParks();
   }
+
+  
   render(){
     return <div className="Parks-container">
         <Parks 
@@ -14,6 +16,9 @@ class ParksContainer extends Component {
           parks={this.props.parks}
           checkIn={this.props.checkIn}
           fetchCurrentUsers={this.props.fetchCurrentUsers} />
+        
+        
+
       </div>;
   }
 }

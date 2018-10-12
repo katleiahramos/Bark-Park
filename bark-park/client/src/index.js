@@ -8,8 +8,8 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import thunk from 'redux-thunk';
-import Login from './components/Login'
-
+import Login from './components/Login';
+import Welcome from './components/Welcome';
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
@@ -22,6 +22,7 @@ ReactDOM.render((
             <div>
                 <Route exact path="/login" component={Login}></Route>
                 <Route exact path="/app" component={App}></Route>
+                <Route exact path="/" component={Welcome}></Route>
             </div>
         </Router>
     </Provider>

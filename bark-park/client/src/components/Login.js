@@ -44,7 +44,7 @@ class Login extends Component {
         } else {
             return (
                 <div className="Login-Form z-depth-5">
-                    <h4>Log In</h4><br/>
+                    <h2 className="teal-text">Log In</h2>
                     <form onSubmit={this.handleOnSubmit}>
                         <Input
 

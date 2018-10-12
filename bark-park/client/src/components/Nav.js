@@ -6,7 +6,7 @@ import ParkForm from './ParkForm'
 const Nav = ({ addPark, handleLogOut}) => {
 
     return (
-    <Navbar brand="Bark Park" right>
+    <Navbar className="teal" brand="Bark Park" right>
           
 
     <Modal

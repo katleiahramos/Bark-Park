@@ -96,7 +96,7 @@ class App extends Component {
         </div>
       );
     } else {
-       return <Redirect to="/login" />
+       return <Redirect to="/" />
     }
     
   }

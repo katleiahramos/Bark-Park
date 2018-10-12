@@ -20,7 +20,12 @@ const Parks = ({ deletePark, editPark, parks, checkIn, fetchCurrentUsers}) => {
 
   return (
     <div className="Parks">
-      <Row>{renderParks()}</Row>
+      <Row>
+        {renderParks()} 
+      
+      </Row>
+
+      
     </div>
   );
 

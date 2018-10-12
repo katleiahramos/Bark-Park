@@ -1,5 +1,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
 }
+
+.Welcome {
+  /* background-image: url('https://i.imgur.com/kve2Fdr.jpg'); */
+  margin: 100px auto;
+  padding: 50px 50px;
+  width: 25%;
+}
+
