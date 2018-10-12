@@ -7,6 +7,6 @@ class CheckinsController < ApplicationController
         checkin.user = user 
         checkin.park = park 
         checkin.save 
-        render json: checkin
+        render json: {parkId: park.id, username: user.username}
     end 
 end 

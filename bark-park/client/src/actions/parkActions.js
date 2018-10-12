@@ -1,13 +1,19 @@
-// addPark: park => dispatch({ type: "ADD_PARK", payload: park }),
-// deletePark: parkId => dispatch({ type: "DELETE_PARK", parkId: parkId }),
-// editingPark: (park) => dispatch({type: "EDITING_PARK", payload: park}),
-// updatePark: (parkEdited) => dispatch({type: "UPDATE_PARK", parkEdited: parkEdited}),
-// checkIn: (parkId) => dispatch({type: "CHECK_IN", parkId})
 
 import Geocode from "react-geocode";
 
 
+export function fetchCurrentUsers(parkId){
 
+    console.log("fetching current users")
+    return (dispatch)=>{
+        dispatch({type: "BEGIN_PARKS_REQUEST"})
+        return fetch(`/api/parks/${parkId}/current`, {
+                headers: {"Content-type": 'application/json'}
+            })
+                .then( resp => resp.json()) 
+    }
+
+}
 
 
 export function findNearByParks(currentLocation) {
@@ -26,14 +32,14 @@ export function findNearByParks(currentLocation) {
             .then(results => {
                 const parks = results.response.venues
                 for (const park of parks) {
-                    
+
                     dispatch({
                         type: "ADD_NEAR_BY",
-                        payload: {name: park.name, address: park.location.address, lat: park.location.lat, long: park.location.lng}
+                        payload: { name: park.name, address: park.location.address, lat: park.location.lat, long: park.location.lng }
                     })
                 }
             })
-            
+
     }
 }
 
@@ -47,8 +53,9 @@ export function fetchParks() {
         return fetch('/api/parks', {
             headers: {
                 "Content-type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("jwtToken")}
-        }) 
+                "Authorization": "Bearer " + localStorage.getItem("jwtToken")
+            }
+        })
             .then(resp => resp.json())
             .then(parks => dispatch({ type: 'ADD_PARKS', payload: parks }))
     }
@@ -59,12 +66,12 @@ export function fetchParks() {
 export function postPark(latLong, park) {
     console.log('in postPark with', park);
     console.log('latLong is', latLong);
-    
+
     return (dispatch) => {
         dispatch({ type: "BEGIN_PARKS_REQUEST" })
 
-       const body = JSON.stringify({ park: { name: park.name, address: park.address, count: 0, lat: latLong.lat, long: latLong.lng } })
-    
+        const body = JSON.stringify({ park: { name: park.name, address: park.address, count: 0, lat: latLong.lat, long: latLong.lng } })
+
         return fetch('/api/parks', {
             method: 'POST',
             headers: { "Content-type": 'application/json' },
@@ -83,7 +90,7 @@ export function createPark(park) {
         return Geocode.fromAddress(`${park.address}`)
             .then(resp => resp.results[0].geometry.location)
             .then(respLatLong => {
-                
+
                 dispatch(postPark(respLatLong, park))
             })
     }
@@ -102,26 +109,27 @@ export function deletePark(parkId) {
         return fetch(`/api/parks/${parkId}`, {
             method: 'DELETE',
         }).then(() => console.log("park was deleted"))
-        .then(() => dispatch(fetchParks()))
+            .then(() => dispatch(fetchParks()))
     }
 }
 
 export function updatePark(park) {
     console.log('in update park, park is:', park)
-    return(dispatch)=>{
-        dispatch({type: "BEGIN_BOOKS_REQUEST"});
-        const body = JSON.stringify({ park: { name: park.name, address: park.address, count: park.count} })
+    return (dispatch) => {
+        dispatch({ type: "BEGIN_BOOKS_REQUEST" });
+        const body = JSON.stringify({ park: { name: park.name, address: park.address, count: park.count } })
         return fetch(`/api/parks/${park.id}`, {
             method: 'PATCH',
             headers: { "Content-type": 'application/json' },
             body: body,
         })
-        .then( resp => console.log('park updated'))
-        .then(() => dispatch(fetchParks()))
+            .then(resp => console.log('park updated'))
+            .then(() => dispatch(fetchParks()))
     }
 }
 
-export function checkIn(park){
+export function checkIn(park) {
+    console.log("in check in function...");
     
     // OLD CODE 
     // const parkCheckedIn = {...park, count: ++park.count }
@@ -129,18 +137,15 @@ export function checkIn(park){
 
     // NEW CODE: uses fetch request to create a checkin 
     // data sent -> Username, park 
-    return(dispatch)=>{
-        dispatch({type: "BEGIN_PARKS_REQUEST"})
-        const body = JSON.stringify({parkname: park.name, username: localStorage.getItem("currentUser")})
+    return (dispatch) => {
+        dispatch({ type: "BEGIN_PARKS_REQUEST" })
+        const body = JSON.stringify({ parkname: park.name, username: localStorage.getItem("currentUser") })
         return fetch('/api/checkins', {
             method: 'POST',
-            body: body, 
-            headers: {"Content-type": 'application/json' }
+            body: body,
+            headers: { "Content-type": 'application/json' }
         })
-        .then(resp=>resp.json())
-        .then(checkin=>{
-            debugger
-        })
+            .then(resp => resp.json())
     }
 }
 
