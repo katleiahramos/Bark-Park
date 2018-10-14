@@ -11,14 +11,14 @@
 [x]There should be 2 container components
     - map container 
     - parks container 
-[]There should be 5 stateless components
+[x]There should be 5 stateless components
     - Park.js 
     - Parks.js  
-    - Router TODO: make this a stateless component 
-    - Navbar 
-    - Welcome Page TODO: stateless component 
-[]There should be 3 routes
-    - welcome page  '/welcome?'
+    - AppRouter.js
+    - Navbar.js
+    - Welcome.js
+[x]There should be 3 routes
+    - Signup: '/signup'
     - App : '/app' 
     - Login '/login'
 
