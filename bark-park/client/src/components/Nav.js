@@ -6,9 +6,9 @@ import ParkForm from './ParkForm'
 const Nav = ({ addPark, handleLogOut}) => {
 
     return (
-    <Navbar className="teal" brand="Bark Park" right>
+    <Navbar className="teal" brand="Bark Park"  left>
           
-
+     <NavItem onClick={handleLogOut}>Log Out</NavItem>
     <Modal
       header="Add Park"
       trigger={
@@ -22,7 +22,7 @@ const Nav = ({ addPark, handleLogOut}) => {
       <ParkForm addPark={addPark} />
     </Modal>
 
-  <NavItem onClick={handleLogOut}>Log Out</NavItem>
+  
 
 
   </Navbar>
