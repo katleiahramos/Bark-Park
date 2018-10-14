@@ -4,10 +4,10 @@ export function loginUser(loginParams) {
     return (dispatch) => {
         const body = JSON.stringify(loginParams)
 
-        dispatch({ type: "BEGIN_LOGIN" })
+        dispatch({ type: "BEGIN_USER_REQUEST" })
 
         return fetch("/api/login", {
-            method: 'post',
+            method: 'POST',
             body: body,
             headers: { "Content-type": 'application/json' },
         })
@@ -19,6 +19,19 @@ export function loginUser(loginParams) {
             })
     }
 
+}
+
+export function createUser(userParams){
+    return (dispatch)=>{
+        const body = JSON.stringify(userParams)
+        dispatch({ type: "BEGIN_USER_REQUEST"})
+        return fetch('/api/users', {
+            method: 'POST',
+            body: body,
+            headers: { "Content-type": 'application/json' },
+        })
+        .then( resp => resp.json()) 
+    }
 }
 
 export function logoutUser() {

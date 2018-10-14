@@ -29,9 +29,8 @@ class Park extends Component {
 
   handleCheckIn = () => {
     this.props.checkIn(this.props.parkInfo)
-    this.setState({
-      
-    })
+    
+
 
   }
 

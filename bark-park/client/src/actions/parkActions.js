@@ -145,7 +145,7 @@ export function checkIn(park) {
             body: body,
             headers: { "Content-type": 'application/json' }
         })
-            .then(resp => resp.json())
+            .then((resp => resp.json()))
     }
 }
 

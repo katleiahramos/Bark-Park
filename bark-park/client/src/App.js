@@ -28,11 +28,13 @@ class App extends Component {
 
   updatePark = parkEdited => {
     this.props.updatePark(parkEdited)
-    // can I somehow get the modal to close here
+    
   }
 
   checkIn = park => {
     this.props.checkIn(park)
+    .then(this.setState({ state: this.state }))
+    
   }
 
   handleLogOut = () => {
