@@ -43,10 +43,6 @@ class Login extends Component {
             return <Redirect to="/app" />
         } else {
             return (
-<<<<<<< HEAD
-
-=======
->>>>>>> ruby-backend
                 <div className="Login-Form z-depth-5">
                     <h2 className="teal-text">Log In</h2>
                     <form onSubmit={this.handleOnSubmit}>
