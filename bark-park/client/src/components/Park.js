@@ -1,6 +1,5 @@
-import { Card, Col, Button, Modal, Dropdown, Chip } from "react-materialize";
+import { Card, Col, Button, Modal, Dropdown, Chip, Icon ,NavItem} from "react-materialize";
 import React, { Component } from "react";
-
 
 
 class Park extends Component {
@@ -29,8 +28,6 @@ class Park extends Component {
 
   handleCheckIn = () => {
     this.props.checkIn(this.props.parkInfo)
-    
-
 
   }
 
@@ -42,11 +39,11 @@ class Park extends Component {
     return (
       <Col s={6}>
         <Card title={this.props.parkInfo.name} className="teal lighten-5">
-          <p><Button icon="nature_people" floating />Count: {this.state.currentUsers.length}</p>
+          <p>Count: {this.state.currentUsers.length}</p>
   
-          <Dropdown trigger={<Button floating icon="more_horiz" />}>
+          <Dropdown trigger={<Button icon="more_horiz" />}>
             <Modal
-              trigger={<Button floating icon="info_outline" waves="light" />}
+              trigger={<NavItem waves="light">Info</NavItem>}
               header={this.props.parkInfo.name}
               s={6}
             >
@@ -54,29 +51,30 @@ class Park extends Component {
               <h5>Count: {this.state.currentUsers.length}</h5>
               {this.renderCurrentUsers()}
             </Modal>
-            <Button
-              floating
+            <NavItem 
+              // floating
               onClick={() => this.props.deletePark(this.props.parkInfo.id)}
               waves="light"
-              icon="delete"
-            />
-            <Button
-              floating
+              // icon="delete"
+            >Delete</NavItem>
+            <NavItem
+              // floating
               onClick={() => this.props.editPark(this.props.parkInfo.id)}
               waves="light"
-              icon="edit"
-            />
+              // icon="edit"
+            >Edit</NavItem>
           </Dropdown>
-          <Button
-            floating
-            icon="check_circle_outline"
+          <Button 
+            // icon="check_circle_outline"
             onClick={this.handleCheckIn}
-          />
+          >Check In<Icon left>check_circle_outline</Icon></Button>
         </Card>
       </Col>
     );
   }
 }
+
+export default Park;
 // const Park = ({ parkInfo, deletePark, editPark, checkIn, fetchCurrentUsers }) => {
 //   // parkInfo =>  {name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", id: "cjmkvc3xu00023b5t4t1z4aq1", count: 1}
 
@@ -121,4 +119,4 @@ class Park extends Component {
 //   );
 // };
 
-export default Park;
+
