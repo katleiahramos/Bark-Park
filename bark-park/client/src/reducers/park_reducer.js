@@ -41,7 +41,8 @@ export default function parkReducer(
       return { editingParks: false, parkToEdit: null, parks: parks }
     case 'CHECK_IN':
       console.log("checking in...");
-      parks = state.parks.map(park => park.id === action.parkId ? { ...park, count: park.count = park.count + 1 } : park)
+      // action.payload -> id: 6, user_id: 2, park_id: 1, active: true, checkin_date: "2018-10-11T20:31:25.303Z"}
+      parks = state.parks.map(park => park.id === action.payload.parkId ? { ...park, count: ++park.count} : park)
       console.log('returning', parks);
       return { ...state, parks: parks }
     default:

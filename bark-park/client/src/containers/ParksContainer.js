@@ -6,13 +6,19 @@ class ParksContainer extends Component {
   componentDidMount(){
     this.props.fetchParks();
   }
+
+  
   render(){
     return <div className="Parks-container">
         <Parks 
           deletePark={this.props.deletePark}
           editPark={this.props.editPark} 
           parks={this.props.parks}
-          checkIn={this.props.checkIn} />
+          checkIn={this.props.checkIn}
+          fetchCurrentUsers={this.props.fetchCurrentUsers} />
+        
+        
+
       </div>;
   }
 }

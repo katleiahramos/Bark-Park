@@ -13,14 +13,14 @@
     - parks container 
 []There should be 5 stateless components
     - Park.js 
-    - Parks.js TODO: stateless, need to turn into const 
+    - Parks.js  
     - Router TODO: make this a stateless component 
-    - Navbar TODO: Make this a stateless component 
-    - ABOUT TODO: fix up this page 
+    - Navbar 
+    - Welcome Page TODO: stateless component 
 []There should be 3 routes
-    - home
-    - My Profile: TODO: sideNav
-    - about TODO: make about page 
+    - welcome page  '/welcome?'
+    - App : '/app' 
+    - Login '/login'
 
 [x]The Application must make use of react-router and proper RESTful routing (should you choose to use react-router v3 please refer to the appropriate docs; docs for v4 can be found here)
     - router used for routes mentioned above 

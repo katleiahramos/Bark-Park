@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_185929) do
+ActiveRecord::Schema.define(version: 2018_10_11_182638) do
+
+  create_table "checkins", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "park_id"
+    t.boolean "active", default: true
+    t.datetime "checkin_date"
+  end
 
   create_table "parks", force: :cascade do |t|
     t.string "name"
