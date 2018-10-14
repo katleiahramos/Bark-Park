@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Input, Button } from "react-materialize";
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/userActions'
-import {Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
     state = {
@@ -11,7 +11,7 @@ class Login extends Component {
         password: "",
     }
 
-    handleOnChange = (event)=> {
+    handleOnChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -21,15 +21,15 @@ class Login extends Component {
         event.preventDefault();
         const loginParams = { username: this.state.username, password: this.state.password }
         this.props.loginUser(loginParams)
-            .then( () => this.setState({
+            .then(() => this.setState({
                 username: "",
                 password: ""
-            }) )
-            // .then(user => {
-            //     localStorage.setItem("jwtToken", user.jwt)
-            //     // import to set state here so it rerenders component to make the redirect 
+            }))
+        // .then(user => {
+        //     localStorage.setItem("jwtToken", user.jwt)
+        //     // import to set state here so it rerenders component to make the redirect 
 
-            // })
+        // })
 
 
 
@@ -43,7 +43,9 @@ class Login extends Component {
             return <Redirect to="/app" />
         } else {
             return (
-                <div>
+
+                <div className="Login-Form z-depth-5">
+                    <h2 className="teal-text">Log In</h2>
                     <form onSubmit={this.handleOnSubmit}>
                         <Input
 
