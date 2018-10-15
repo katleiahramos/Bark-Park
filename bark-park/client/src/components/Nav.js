@@ -10,6 +10,7 @@ const Nav = ({ addPark, handleLogOut }) => {
 
       <NavItem onClick={handleLogOut}>Log Out</NavItem>
       <Modal
+        id="add-park-form"
         header="Add Park"
         trigger={
           <NavItem

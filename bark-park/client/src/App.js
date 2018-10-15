@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import "./App.css";
 import { fetchParks, createPark, deletePark, updatePark, checkIn, fetchCurrentUsers} from './actions/parkActions'
-import { Navbar, NavItem, Modal, Row, Col, Button} from "react-materialize";
+import { Modal, Row, Col} from "react-materialize";
 import {Redirect } from 'react-router-dom';
 
 import {logoutUser} from './actions/userActions'
-import Login from './components/Login'
+
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
 import MapContainer from "./containers/MapContainer";
@@ -28,7 +28,6 @@ class App extends Component {
 
   updatePark = parkEdited => {
     this.props.updatePark(parkEdited)
-
     
   }
 
@@ -58,7 +57,7 @@ class App extends Component {
   render() {
 
     const modalForm = (this.props.parkToEdit ? 
-      <Modal open>
+      <Modal id="edit-park-form" open>
         <ParkForm 
           updatePark={this.updatePark} 
           name={this.props.parkToEdit.name} 

@@ -52,7 +52,7 @@ class ParkForm extends Component {
             value={this.state.address}
           />
 
-          <Button type="submit" icon="">Submit</Button>
+          <Button modal="close" type="submit" icon="">Submit</Button>
         </form>
 
     );
