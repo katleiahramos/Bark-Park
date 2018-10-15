@@ -11,14 +11,7 @@ class AuthController < ApplicationController
         end
     end
 
-    def me 
 
-        #now that we have user ID, we can find that user
-        # this is our current user now 
-        
-        # could use this for finding show page of parks for a single user 
-        # render json: {user: user, books: user.books}
-    end
 
     
 end
