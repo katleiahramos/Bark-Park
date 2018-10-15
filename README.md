@@ -2,6 +2,8 @@
 
 React app to help you and your dogs check-out local dog parks and make new friends!
 
+<blockquote class="imgur-embed-pub" lang="en" data-id="VspCMYM"><a href="//imgur.com/VspCMYM"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
 ## Installation
 
 1. Clone this repo and run `bundle install`
