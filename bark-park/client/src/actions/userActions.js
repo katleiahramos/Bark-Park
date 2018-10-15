@@ -13,9 +13,14 @@ export function loginUser(loginParams) {
         })
             .then(resp => resp.json())
             .then(userInfo => {
-                localStorage.setItem("jwtToken", userInfo.jwt)
-                localStorage.setItem("currentUser", userInfo.user.username)
-                dispatch({ type: "LOGIN", payload: userInfo })
+                if(userInfo.error){
+                    window.alert(userInfo.error)
+                }else {
+                    localStorage.setItem("jwtToken", userInfo.jwt)
+                    localStorage.setItem("currentUser", userInfo.user.username)
+                    dispatch({ type: "LOGIN", payload: userInfo })
+                }
+
             })
     }
 
