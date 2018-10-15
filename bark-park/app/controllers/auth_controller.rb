@@ -7,7 +7,7 @@ class AuthController < ApplicationController
             token = encode_token( user_id: user.id)
             render json: {user: user, jwt: token} 
         else 
-            render json: {error: "user not found"}
+            render json: {error: "Username and password combination not found. Please try again or create an account."}
         end
     end
 
