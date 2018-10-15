@@ -64,7 +64,7 @@ class Login extends Component {
                             name="password"
                             value={this.state.password}
                         /><br></br>
-
+                        <Button node="a" href="/">Back</Button>
                         <Button type="submit" icon="">Submit</Button>
                     </form>
                 </div>
