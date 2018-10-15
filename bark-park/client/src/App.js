@@ -28,12 +28,13 @@ class App extends Component {
 
   updatePark = parkEdited => {
     this.props.updatePark(parkEdited)
+
     
   }
 
   checkIn = park => {
     this.props.checkIn(park)
-    .then(this.setState({ state: this.state }))
+
     
   }
 

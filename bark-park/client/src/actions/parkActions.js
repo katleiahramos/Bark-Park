@@ -45,7 +45,6 @@ export function findNearByParks(currentLocation) {
 
 
 export function fetchParks() {
-    // TODO: ADD SOME AUTHORIZATION PROTECTION HERE 
     console.log('in fetch parks...')
     return (dispatch) => {
         dispatch({ type: 'BEGIN_PARKS_REQUEST' })
@@ -145,7 +144,8 @@ export function checkIn(park) {
             body: body,
             headers: { "Content-type": 'application/json' }
         })
-            .then((resp => resp.json()))
+            .then(resp => console.log("successfully checked in"))
+            .then(() => dispatch(fetchParks()))
     }
 }
 

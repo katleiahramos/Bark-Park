@@ -1,3 +1,11 @@
+.Map-container {
+  margin: 2px 0px;
+  overflow: hidden;
+}
+
+.btn {
+  margin: 0px 1px;
+}
 
 .Parks-container {
   height: 600px ;
