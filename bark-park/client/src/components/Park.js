@@ -1,7 +1,7 @@
 import { Card, Col, Button, Modal, Dropdown, Chip, Icon ,NavItem} from "react-materialize";
 import React, { Component } from "react";
-
-
+import { checkIn } from '../actions/parkActions'
+import { connect } from "react-redux"
 class Park extends Component {
   state = {
     currentUsers: [],
@@ -18,9 +18,10 @@ class Park extends Component {
     console.log("rendering current users");
     
     return (
-      this.state.currentUsers.map( user => {
+      this.state.currentUsers.map( (user, idx) => {
+        
         return (
-          <Chip>{user}</Chip>
+          <Chip key={idx} >{user}</Chip>
         )
       })
     )
@@ -28,6 +29,12 @@ class Park extends Component {
 
   handleCheckIn = () => {
     this.props.checkIn(this.props.parkInfo)
+    .then(()=>{
+      this.props.fetchCurrentUsers(this.props.parkInfo.id)
+      .then( users => this.setState({
+        currentUsers: users 
+      }))
+    })
 
   }
 
@@ -39,7 +46,7 @@ class Park extends Component {
     return (
       <Col s={6}>
         <Card title={this.props.parkInfo.name} className="teal lighten-5">
-          <p>Count: {this.state.currentUsers.length}</p>
+          <p id={this.props.parkInfo.count}>Count: {this.state.currentUsers.length}</p>
   
           <Dropdown trigger={<Button icon="more_horiz" />}>
             <Modal
@@ -57,7 +64,7 @@ class Park extends Component {
               waves="light"
               // icon="delete"
             >Delete</NavItem>
-            
+
             <NavItem
               // floating
               onClick={() => this.props.editPark(this.props.parkInfo.id)}
@@ -75,7 +82,11 @@ class Park extends Component {
   }
 }
 
-export default Park;
+const mapDispatchToProps = (dispatch) => {
+  return {checkIn: (park)=>dispatch(checkIn(park))}
+}
+
+export default connect(null, mapDispatchToProps)(Park);
 
 // const Park = ({ parkInfo, deletePark, editPark, checkIn, fetchCurrentUsers }) => {
 //   // parkInfo =>  {name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", id: "cjmkvc3xu00023b5t4t1z4aq1", count: 1}

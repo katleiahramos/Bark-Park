@@ -12,7 +12,7 @@ const Parks = ({ deletePark, editPark, parks, checkIn, fetchCurrentUsers}) => {
           editPark={editPark} 
           parkInfo={park} 
           key={idx}
-          checkIn={checkIn} 
+          // checkIn={checkIn} 
           fetchCurrentUsers={fetchCurrentUsers}/>
       );
     });

@@ -31,11 +31,16 @@ class App extends Component {
     
   }
 
-  checkIn = park => {
-    this.props.checkIn(park)
+  // checkIn = park => {
+  //   this.props.checkIn(park)
+  //   .then(()=>{
+  //     this.setState({
+        
+  //     })
+  //   })
 
     
-  }
+  // }
 
   handleLogOut = () => {
     this.props.logoutUser()
@@ -121,7 +126,7 @@ const mapDispatchToProps = dispatch => {
     deletePark: parkId => dispatch(deletePark(parkId)),
     editingPark: (park) => dispatch({type: "EDITING_PARK", payload: park}),
     updatePark: (parkEdited) => dispatch(updatePark(parkEdited)),
-    checkIn: (park) => dispatch(checkIn(park)), 
+    // checkIn: (park) => dispatch(checkIn(park)), 
     fetchParks: ()=>dispatch(fetchParks()),
     logoutUser: ()=>logoutUser(),
     fetchCurrentUsers: (parkId)=>dispatch(fetchCurrentUsers(parkId))

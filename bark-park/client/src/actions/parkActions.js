@@ -144,8 +144,9 @@ export function checkIn(park) {
             body: body,
             headers: { "Content-type": 'application/json' }
         })
-            .then(resp => console.log("successfully checked in"))
-            .then(() => dispatch(fetchParks()))
+            .then(resp => resp)
+            // .then( () => dispatch({type: "CHECK_IN", payload: park}))
+            // .then(() => dispatch(fetchParks()))
     }
 }
 
