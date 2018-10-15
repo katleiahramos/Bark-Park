@@ -21,12 +21,17 @@ class SignupForm extends Component {
         event.preventDefault();
         const userParams = { username: this.state.username, password: this.state.password }
         this.props.createUser(userParams)
-            .then(()=>{
-                this.props.loginUser(userParams)
-                .then(() => this.setState({
-                    username: "",
-                    password: ""
-                }))
+            .then((resp)=>{
+                if(resp.errors){
+                    window.alert(JSON.stringify(resp.errors))
+                }else{
+                    this.props.loginUser(userParams)
+                    .then(() => this.setState({
+                        username: "",
+                        password: ""
+                    }))
+                }
+      
             })
        
 

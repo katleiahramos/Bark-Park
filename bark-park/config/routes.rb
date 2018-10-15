@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     # get :parks, to: "parks#index"
       post '/users', to: 'users#create'
       post '/login', to: "auth#create"
-      get '/welcome', to: "application#welcome"
+      # get '/welcome', to: "application#welcome"
       post 'user_token', to: 'user_token#create'
       # post '/api/parks', to: "parks#create"
       resources :checkins

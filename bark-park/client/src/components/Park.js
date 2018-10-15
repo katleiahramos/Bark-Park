@@ -75,6 +75,7 @@ class Park extends Component {
 }
 
 export default Park;
+
 // const Park = ({ parkInfo, deletePark, editPark, checkIn, fetchCurrentUsers }) => {
 //   // parkInfo =>  {name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", id: "cjmkvc3xu00023b5t4t1z4aq1", count: 1}
 

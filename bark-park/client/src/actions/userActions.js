@@ -35,7 +35,7 @@ export function createUser(userParams){
             body: body,
             headers: { "Content-type": 'application/json' },
         })
-        .then( resp => resp.json()) 
+        .then( resp => resp.json())
     }
 }
 
