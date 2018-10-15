@@ -1,7 +1,5 @@
 # Bark-Park
 
-# Project Manager App 
-
 React app to help you and your dogs check-out local dog parks and make new friends!
 
 ## Installation
