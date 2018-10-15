@@ -17,7 +17,7 @@ export function loginUser(loginParams) {
                     window.alert(userInfo.error)
                 }else {
                     localStorage.setItem("jwtToken", userInfo.jwt)
-                    localStorage.setItem("currentUser", userInfo.user.username)
+                    // localStorage.setItem("currentUser", userInfo.user.username)
                     dispatch({ type: "LOGIN", payload: userInfo })
                 }
 
@@ -41,5 +41,5 @@ export function createUser(userParams){
 
 export function logoutUser() {
     localStorage.removeItem("jwtToken")
-    localStorage.removeItem("currentUser")
+    // localStorage.removeItem("currentUser")
 }

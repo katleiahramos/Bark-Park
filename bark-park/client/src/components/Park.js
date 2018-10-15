@@ -7,7 +7,7 @@ class Park extends Component {
     currentUsers: [],
   }
   componentDidMount(){
-    // TODO: Fetch current checkins using parkId
+    
     this.props.fetchCurrentUsers(this.props.parkInfo.id)
       .then( users => this.setState({
         currentUsers: users 
@@ -57,6 +57,7 @@ class Park extends Component {
               waves="light"
               // icon="delete"
             >Delete</NavItem>
+            
             <NavItem
               // floating
               onClick={() => this.props.editPark(this.props.parkInfo.id)}
