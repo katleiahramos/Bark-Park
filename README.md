@@ -2,7 +2,7 @@
 
 React app to help you and your dogs check-out local dog parks and make new friends!
 
-(https://i.imgur.com/VspCMYM.png)
+![](https://i.imgur.com/VspCMYM.png)
 
 ## Installation
 
