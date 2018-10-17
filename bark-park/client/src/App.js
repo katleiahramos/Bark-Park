@@ -26,10 +26,7 @@ class App extends Component {
     this.props.editingPark(parkToEdit)
   };
 
-  updatePark = parkEdited => {
-    this.props.updatePark(parkEdited)
-    
-  }
+
 
   // checkIn = park => {
   //   this.props.checkIn(park)
@@ -64,7 +61,7 @@ class App extends Component {
     const modalForm = (this.props.parkToEdit ? 
       <Modal id="edit-park-form" open>
         <ParkForm 
-          updatePark={this.updatePark} 
+          updatePark={this.props.updatePark} 
           name={this.props.parkToEdit.name} 
           address={this.props.parkToEdit.address}
           oldPark={this.props.parkToEdit} />
