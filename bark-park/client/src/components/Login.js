@@ -25,11 +25,7 @@ class Login extends Component {
                 username: "",
                 password: ""
             }))
-        // .then(user => {
-        //     localStorage.setItem("jwtToken", user.jwt)
-        //     // import to set state here so it rerenders component to make the redirect 
-
-        // })
+       
 
 
 
@@ -38,7 +34,6 @@ class Login extends Component {
 
 
     render() {
-        // TODO: handle incorrect username/password
         if (localStorage.getItem("jwtToken") !== "undefined" && localStorage.getItem("jwtToken") !== null) {
             return <Redirect to="/app" />
         } else {
@@ -75,12 +70,7 @@ class Login extends Component {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         loggedIn: state.userReducer.loggedIn,
-//         currentUser: state.userReducer.currentUser
-//     }
-// }
+
 const mapDispatchToProps = (dispatch) => {
     return {
         loginUser: (loginParams) => dispatch(loginUser(loginParams))
