@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Input, Button, Icon } from "react-materialize";
+import { Input, Button } from "react-materialize";
 import { connect } from 'react-redux';
 import { createUser, loginUser } from "../actions/userActions"
 import { Redirect } from 'react-router-dom';

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import "./App.css";
-import { fetchParks, createPark, deletePark, updatePark, handleModalClose, fetchCurrentUsers} from './actions/parkActions'
+import { fetchParks, createPark, deletePark, updatePark, fetchCurrentUsers} from './actions/parkActions'
 import { Modal, Row, Col, Button} from "react-materialize";
 import {Redirect } from 'react-router-dom';
 

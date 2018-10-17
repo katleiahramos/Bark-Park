@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Row } from "react-materialize";
 import Park from "./Park";
 
