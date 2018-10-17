@@ -123,7 +123,9 @@ export function updatePark(park) {
             body: body,
         })
             .then(resp => console.log('park updated'))
-            .then(() => dispatch(fetchParks()))
+            .then(() => {
+                dispatch(fetchParks())
+            })
     }
 }
 

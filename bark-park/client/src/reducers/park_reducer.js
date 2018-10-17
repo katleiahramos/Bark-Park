@@ -18,7 +18,7 @@ export default function parkReducer(
 
     case 'ADD_PARKS':
       console.log('ADD_PARKS is returning..', { parks: action.payload });
-      return { ...state, parks: action.payload }
+      return { ...state, editingParks: false, parkToEdit: null, parks: action.payload }
 
     case "ADD_NEAR_BY":
       console.log(action.payload); //{name: "test", address: "test"}
@@ -35,18 +35,20 @@ export default function parkReducer(
       console.log('in editing parks');
 
       return { parks: state.parks, editingParks: true, parkToEdit: action.payload }
-    // case 'UPDATE_PARK':
-    //   console.log('updating park...');
 
-    //   parks = state.parks.map(park => park.id === action.parkEdited.id ? action.parkEdited : park)
-    //   console.log('parks is now...', parks)
-    //   return { editingParks: false, parkToEdit: null, parks: parks }
-    case 'CHECK_IN':
-      console.log("checking in...");
-      // action.payload -> id: 6, user_id: 2, park_id: 1, active: true, checkin_date: "2018-10-11T20:31:25.303Z"}
-      parks = state.parks.map(park => park.id === action.payload.id ? { ...park, count: ++park.count} : park)
-      console.log('returning', parks);
-      return { ...state, parks: parks }
+    case 'UPDATE_PARK':
+      console.log('updating park...');
+
+      // parks = state.parks.map(park => park.id === action.parkEdited.id ? action.parkEdited : park)
+      // console.log('parks is now...', parks)
+      return { editingParks: false, parkToEdit: null, parks: parks }
+
+    // case 'CHECK_IN':
+    //   console.log("checking in...");
+    //   // action.payload -> id: 6, user_id: 2, park_id: 1, active: true, checkin_date: "2018-10-11T20:31:25.303Z"}
+    //   parks = state.parks.map(park => park.id === action.payload.id ? { ...park, count: ++park.count} : park)
+    //   console.log('returning', parks);
+    //   return { ...state, parks: parks }
 
     default:
       return state;

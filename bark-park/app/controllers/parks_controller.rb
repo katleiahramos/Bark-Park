@@ -2,7 +2,7 @@ require 'pry'
 
 
 class ParksController < ApplicationController 
-    before_action :authorized, only: [:index]
+    # before_action :authorized, only: [:index]
 
     def index
         @parks = Park.all 
