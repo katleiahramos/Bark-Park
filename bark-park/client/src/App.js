@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import "./App.css";
-import { fetchParks, createPark, deletePark, updatePark, checkIn, fetchCurrentUsers} from './actions/parkActions'
-import { Modal, Row, Col} from "react-materialize";
+import { fetchParks, createPark, deletePark, updatePark, handleModalClose, fetchCurrentUsers} from './actions/parkActions'
+import { Modal, Row, Col, Button} from "react-materialize";
 import {Redirect } from 'react-router-dom';
 
 import {logoutUser} from './actions/userActions'
@@ -59,7 +59,14 @@ class App extends Component {
   render() {
 
     const modalForm = (this.props.parkToEdit ? 
-      <Modal id="edit-park-form" open>
+      <Modal 
+        id="edit-park-form" 
+        actions={
+          <Button 
+            modal="close"
+            onClick={this.props.handleModalClose}>Close</Button>
+        }
+        open>
         <ParkForm 
           updatePark={this.props.updatePark} 
           name={this.props.parkToEdit.name} 
@@ -124,6 +131,7 @@ const mapDispatchToProps = dispatch => {
     editingPark: (park) => dispatch({type: "EDITING_PARK", payload: park}),
     updatePark: (parkEdited) => dispatch(updatePark(parkEdited)),
     // checkIn: (park) => dispatch(checkIn(park)), 
+    handleModalClose: ()=>dispatch({type: "CLOSE_MODAL"}),
     fetchParks: ()=>dispatch(fetchParks()),
     logoutUser: ()=>logoutUser(),
     fetchCurrentUsers: (parkId)=>dispatch(fetchCurrentUsers(parkId))

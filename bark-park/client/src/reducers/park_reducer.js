@@ -30,6 +30,8 @@ export default function parkReducer(
     //   parks = state.parks.filter(park => park.id !== action.parkId)
     //   console.log('after delete parks are', { parks: parks })
     //   return { parks: parks };
+    case 'CLOSE_MODAL':
+      return {...state, editingParks: false, parkToEdit: false}
 
     case 'EDITING_PARK':
       console.log('in editing parks');
