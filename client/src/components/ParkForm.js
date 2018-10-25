@@ -17,13 +17,12 @@ class ParkForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    // TODO:adding validation
 
     if (this.props.updatePark) {
       const newPark = {...this.state, count: this.props.oldPark.count, id: this.props.oldPark.id}
       this.props.updatePark(newPark)
     } else {
-      this.props.addPark(this.state);
+      this.props.addPark(this.state)
       this.setState({
         name: "",
         address: ""

@@ -87,14 +87,20 @@ export function createPark(park) {
     return (dispatch) => {
         dispatch({ type: "BEGIN_PARKS_REQUEST" })
 
+        //async function() {
+            //const data = await fetchRequest
+            //fetchRequest2(data)
+        //}
+ 
         Geocode.setApiKey("AIzaSyBVugmujTPCHIqrUrOqE4hrGSxj6eWoSY0");
         return Geocode.fromAddress(`${park.address}`)
             .then(resp => resp.results[0].geometry.location)
             .then(respLatLong => {
-
                 dispatch(postPark(respLatLong, park))
             })
+            .catch(error => error.message)
     }
+    console.log('E')
 }
 
 

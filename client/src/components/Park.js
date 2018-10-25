@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 class Park extends Component {
   state = {
     currentUsers: [],
+    counter: 0,
   }
   componentDidMount(){
     
@@ -34,6 +35,17 @@ class Park extends Component {
       .then( users => this.setState({
         currentUsers: users 
       }))
+    })
+
+  }
+
+  handleOnClick = () => {
+    // increase the existing count shown by 1
+
+    this.setState(prevState => {
+      return {
+        counter: prevState.counter + 1
+      }
     })
 
   }
@@ -76,6 +88,11 @@ class Park extends Component {
             // icon="check_circle_outline"
             onClick={this.handleCheckIn}
           >Check In<Icon left>check_circle_outline</Icon></Button>
+
+          <Button
+            onClick={this.handleOnClick}
+            >Increase Counter</Button> 
+            <h3>{this.state.counter}</h3>
         </Card>
       </Col>
     );
