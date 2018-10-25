@@ -6,15 +6,17 @@ React app to help you and your dogs check-out local dog parks and make new frien
 
 ## Installation
 
-1. Clone this repo and run `bundle install`
+1. Clone this repo and cd into 'bark-park' using the following command `cd bark-park`
 
-2. Run `rake db:migrate`
+2. Run `bundle install`
 
-3. Run `rake db:seed`
+3. Run `rake db:migrate`
 
-4. Run `rake start`
+4. Run `rake db:seed`
 
-4. Open your browser to `localhost:3000`
+5. Run `rake start`
+
+6. Open your browser to `localhost:3000`
 
 ## Contributing
 
