@@ -6,7 +6,7 @@ React app to help you and your dogs check-out local dog parks and make new frien
 
 ## Installation
 
-1. Clone this repo and cd into 'bark-park' using the following command `cd bark-park`
+1. Clone this repo 
 
 2. Run `bundle install`
 
