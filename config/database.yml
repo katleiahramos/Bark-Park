@@ -23,3 +23,23 @@ default: &default
 # production:
 #   <<: *default
 #   database: db/production.sqlite3
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: demo_test_development
+  pool: 5
+  username: katleiahramos 
+  password: Mon1ca1136646
+  timeout: 5000
+
+
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: demo_test_test
+  pool: 5
+  username: katleiahramos
+  password: Mon1ca1136646
+  timeout: 5000
