@@ -29,8 +29,8 @@ development:
   encoding: unicode
   database: demo_test_development
   pool: 5
-  username: katleiahramos 
-  password: Mon1ca1136646
+  username: 
+  password: 
   timeout: 5000
 
 
@@ -40,6 +40,6 @@ test:
   encoding: unicode
   database: demo_test_test
   pool: 5
-  username: katleiahramos
-  password: Mon1ca1136646
+  username: 
+  password: 
   timeout: 5000
