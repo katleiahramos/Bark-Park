@@ -4,6 +4,10 @@ React app to help you and your dogs check-out local dog parks and make new frien
 
 ![](https://i.imgur.com/VspCMYM.png)
 
+![](https://media.giphy.com/media/69sHeFFc6ybtxzQir6/giphy.gif)
+
+
+
 ## Installation
 
 1. Clone this repo 
