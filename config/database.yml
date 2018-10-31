@@ -21,8 +21,11 @@ default: &default
 #   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production_db
+  adapter: postgresql
+  database: my_database_development
+  pool: 5
+  timeout: 5000
+  
 
 development:
   adapter: postgresql
