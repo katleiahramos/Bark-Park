@@ -1,11 +1,11 @@
 {
-  "name": "y",
+  "name": "bark-park-app",
   "engines": {
-    "node": ">= 6.9.4",
-    "npm": ">= 4.4.0"
+    "node": "6.3.1"
   },
-  "version": "1.0.0",
-  "description": "dog park app",
-  "main": "index.js",
-  "dependencies": {}
+  "scripts": {
+    "build": "cd client && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
+  }
 }
