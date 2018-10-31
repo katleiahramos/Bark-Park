@@ -5,7 +5,6 @@ import { connect } from "react-redux"
 class Park extends Component {
   state = {
     currentUsers: [],
-    counter: 0,
   }
   componentDidMount(){
     
@@ -39,16 +38,7 @@ class Park extends Component {
 
   }
 
-  handleOnClick = () => {
-    // increase the existing count shown by 1
 
-    this.setState(prevState => {
-      return {
-        counter: prevState.counter + 1
-      }
-    })
-
-  }
 
  
 
@@ -58,16 +48,17 @@ class Park extends Component {
     return (
       <Col s={6}>
         <Card title={this.props.parkInfo.name} className="teal lighten-5">
-          <p id={this.props.parkInfo.count}>Count: {this.state.currentUsers.length}</p>
+          <p id={this.props.parkInfo.count}> <i class="fas fa-dog"></i> {this.state.currentUsers.length}</p>
+          <br></br>
   
           <Dropdown trigger={<Button icon="more_horiz" />}>
             <Modal
-              trigger={<NavItem waves="light">Info</NavItem>}
+              trigger={<NavItem waves="light"> Info</NavItem>}
               header={this.props.parkInfo.name}
               s={6}
             >
-              <h5>Address: {this.props.parkInfo.address}</h5>
-              <h5>Count: {this.state.currentUsers.length}</h5>
+              <h5><i class="fas fa-map-pin"></i> {this.props.parkInfo.address}</h5>
+              <h5><i class="fas fa-user-check"></i> {this.state.currentUsers.length}</h5>
               {this.renderCurrentUsers()}
             </Modal>
             <NavItem 
@@ -87,12 +78,8 @@ class Park extends Component {
           <Button 
             // icon="check_circle_outline"
             onClick={this.handleCheckIn}
-          >Check In<Icon left>check_circle_outline</Icon></Button>
+          ><i class="fas fa-user-check"></i> Check In</Button>
 
-          <Button
-            onClick={this.handleOnClick}
-            >Increase Counter</Button> 
-            <h3>{this.state.counter}</h3>
         </Card>
       </Col>
     );
