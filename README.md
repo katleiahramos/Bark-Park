@@ -8,6 +8,8 @@ React app to help you and your dogs check-out local dog parks and make new frien
 
 
 
+[LIVE DEMO](https://bark-park-app.herokuapp.com/)
+
 ## Installation
 
 1. Clone this repo 
