@@ -154,9 +154,28 @@ export function checkIn(park) {
             body: body,
             headers: { "Content-type": 'application/json' }
         })
-            .then(resp => resp)
+            .then(resp => resp.json())
+            .then(checkIn=> {
+                dispatch({type: "CHECK_IN", payload: checkIn})
+            })
+       
+                
+             
+            
+         
             // .then( () => dispatch({type: "CHECK_IN", payload: park}))
             // .then(() => dispatch(fetchParks()))
+    }
+}
+
+export function checkOut(checkIn) {
+    return (dispatch)=>{
+        dispatch({ type: "BEGIN_PARKS_REQUEST" })
+        return fetch(`/api/checkins/${checkIn.id}/checkout`)
+        .then( resp => {
+            dispatch({type: 'CHECK_OUT'})
+        })
+      
     }
 }
 
