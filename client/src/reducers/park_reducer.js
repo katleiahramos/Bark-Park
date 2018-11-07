@@ -6,6 +6,7 @@ export default function parkReducer(
     loggedIn: false, 
     editingParks: false,
     parkToEdit: null,
+    checkIn: null,
   },
   action
 ) {
@@ -45,13 +46,10 @@ export default function parkReducer(
       // console.log('parks is now...', parks)
       return { editingParks: false, parkToEdit: null, parks: parks }
 
-    // case 'CHECK_IN':
-    //   console.log("checking in...");
-    //   // action.payload -> id: 6, user_id: 2, park_id: 1, active: true, checkin_date: "2018-10-11T20:31:25.303Z"}
-    //   parks = state.parks.map(park => park.id === action.payload.id ? { ...park, count: ++park.count} : park)
-    //   console.log('returning', parks);
-    //   return { ...state, parks: parks }
-
+    case 'CHECK_IN':
+      return { ...state, checkIn: action.payload}
+    case 'CHECK_OUT':
+      return {...state, checkIn: null}
     default:
       return state;
   }
