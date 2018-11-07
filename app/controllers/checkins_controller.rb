@@ -1,3 +1,5 @@
+require 'pry'
+
 class CheckinsController < ApplicationController 
 
     def create 
@@ -7,6 +9,13 @@ class CheckinsController < ApplicationController
         checkin.user = user 
         checkin.park = park 
         checkin.save 
-        render json: {parkId: park.id, username: user.username}
+        render json: checkin
     end 
+
+    def checkout
+        checkin = Checkin.find(params[:id])
+        checkin.update(active: false)
+        checkin.save
+        render json: checkin
+    end
 end 
