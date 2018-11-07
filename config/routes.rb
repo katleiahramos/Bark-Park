@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       # post '/api/parks', to: "parks#create"
       resources :checkins
       resources :parks
-
+      get '/checkins/:id/checkout', to: 'checkins#checkout'
       get '/parks/:id/current', to: 'parks#current_users'
     end 
 
