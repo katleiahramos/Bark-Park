@@ -1,7 +1,8 @@
 import { Card, Col, Button, Modal, Dropdown, Chip, Icon ,NavItem} from "react-materialize";
 import React, { Component } from "react";
-import { checkIn } from '../actions/parkActions'
+import { checkIn, checkOut } from '../actions/parkActions'
 import { connect } from "react-redux"
+
 class Park extends Component {
   state = {
     currentUsers: [],
@@ -38,59 +39,153 @@ class Park extends Component {
 
   }
 
+  handleCheckOut = () => {
+    this.props.checkOut(this.props.checkedIn)
+    .then(()=>{
+      this.props.fetchCurrentUsers(this.props.parkInfo.id)
+      .then( users => this.setState({
+        currentUsers: users 
+      }))
+    })
+  }
+
 
 
  
 
   render(){
     console.log("in Park.js render");
+
+    if(this.props.checkedIn && this.props.checkedIn.park.id === this.props.parkInfo.id){
+      return (
+        <Col s={6}>
+          <Card title={this.props.parkInfo.name} className="teal lighten-5">
+            <p id={this.props.parkInfo.count}> <i class="fas fa-dog"></i> {this.state.currentUsers.length}</p>
+            <br></br>
     
-    return (
-      <Col s={6}>
-        <Card title={this.props.parkInfo.name} className="teal lighten-5">
-          <p id={this.props.parkInfo.count}> <i class="fas fa-dog"></i> {this.state.currentUsers.length}</p>
-          <br></br>
-  
-          <Dropdown trigger={<Button icon="more_horiz" />}>
-            <Modal
-              trigger={<NavItem waves="light"> Info</NavItem>}
-              header={this.props.parkInfo.name}
-              s={6}
-            >
-              <h5><i class="fas fa-map-pin"></i> {this.props.parkInfo.address}</h5>
-              <h5><i class="fas fa-user-check"></i> {this.state.currentUsers.length}</h5>
-              {this.renderCurrentUsers()}
-            </Modal>
-            <NavItem 
-              // floating
-              onClick={() => this.props.deletePark(this.props.parkInfo.id)}
-              waves="light"
-              // icon="delete"
-            >Delete</NavItem>
+            <Dropdown trigger={<Button icon="more_horiz" />}>
+              <Modal
+                trigger={<NavItem waves="light"> Info</NavItem>}
+                header={this.props.parkInfo.name}
+                s={6}
+              >
+                <h5><i class="fas fa-map-pin"></i> {this.props.parkInfo.address}</h5>
+                <h5><i class="fas fa-user-check"></i> {this.state.currentUsers.length}</h5>
+                {this.renderCurrentUsers()}
+              </Modal>
+              <NavItem 
+                // floating
+                onClick={() => this.props.deletePark(this.props.parkInfo.id)}
+                waves="light"
+                // icon="delete"
+              >Delete</NavItem>
 
-            <NavItem
-              // floating
-              onClick={() => this.props.editPark(this.props.parkInfo.id)}
-              waves="light"
-              // icon="edit"
-            >Edit</NavItem>
-          </Dropdown>
-          <Button 
-            // icon="check_circle_outline"
-            onClick={this.handleCheckIn}
-          ><i class="fas fa-user-check"></i> Check In</Button>
+              <NavItem
+                // floating
+                onClick={() => this.props.editPark(this.props.parkInfo.id)}
+                waves="light"
+                // icon="edit"
+              >Edit</NavItem>
+            </Dropdown>
 
-        </Card>
-      </Col>
-    );
+            <Button onClick={this.handleCheckOut}>CHECK OUT</Button>
+
+          </Card>
+        </Col>
+      );
+    } else if(this.props.checkedIn){
+       return (
+        <Col s={6}>
+          <Card title={this.props.parkInfo.name} className="teal lighten-5">
+            <p id={this.props.parkInfo.count}> <i class="fas fa-dog"></i> {this.state.currentUsers.length}</p>
+            <br></br>
+    
+            <Dropdown trigger={<Button icon="more_horiz" />}>
+              <Modal
+                trigger={<NavItem waves="light"> Info</NavItem>}
+                header={this.props.parkInfo.name}
+                s={6}
+              >
+                <h5><i class="fas fa-map-pin"></i> {this.props.parkInfo.address}</h5>
+                <h5><i class="fas fa-user-check"></i> {this.state.currentUsers.length}</h5>
+                {this.renderCurrentUsers()}
+              </Modal>
+              <NavItem 
+                // floating
+                onClick={() => this.props.deletePark(this.props.parkInfo.id)}
+                waves="light"
+                // icon="delete"
+              >Delete</NavItem>
+
+              <NavItem
+                // floating
+                onClick={() => this.props.editPark(this.props.parkInfo.id)}
+                waves="light"
+                // icon="edit"
+              >Edit</NavItem>
+            </Dropdown>
+
+
+          </Card>
+        </Col>
+      );
+    } else {
+      return (
+        <Col s={6}>
+          <Card title={this.props.parkInfo.name} className="teal lighten-5">
+            <p id={this.props.parkInfo.count}> <i class="fas fa-dog"></i> {this.state.currentUsers.length}</p>
+            <br></br>
+    
+            <Dropdown trigger={<Button icon="more_horiz" />}>
+              <Modal
+                trigger={<NavItem waves="light"> Info</NavItem>}
+                header={this.props.parkInfo.name}
+                s={6}
+              >
+                <h5><i class="fas fa-map-pin"></i> {this.props.parkInfo.address}</h5>
+                <h5><i class="fas fa-user-check"></i> {this.state.currentUsers.length}</h5>
+                {this.renderCurrentUsers()}
+              </Modal>
+              <NavItem 
+                // floating
+                onClick={() => this.props.deletePark(this.props.parkInfo.id)}
+                waves="light"
+                // icon="delete"
+              >Delete</NavItem>
+
+              <NavItem
+                // floating
+                onClick={() => this.props.editPark(this.props.parkInfo.id)}
+                waves="light"
+                // icon="edit"
+              >Edit</NavItem>
+            </Dropdown>
+
+            <Button 
+              // icon="check_circle_outline"
+              onClick={this.handleCheckIn}
+            ><i class="fas fa-user-check"></i> Check In</Button>
+
+          </Card>
+        </Col>
+      );
+    }
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {checkIn: (park)=>dispatch(checkIn(park))}
+  return {
+    checkIn: (park)=>dispatch(checkIn(park)),
+    checkOut: (checkInData)=>dispatch(checkOut(checkInData))
+  }
 }
 
-export default connect(null, mapDispatchToProps)(Park);
+const mapStateToProps = state => {
+  return {
+    checkedIn: state.parkReducer.checkIn
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Park);
 
 // const Park = ({ parkInfo, deletePark, editPark, checkIn, fetchCurrentUsers }) => {
 //   // parkInfo =>  {name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", id: "cjmkvc3xu00023b5t4t1z4aq1", count: 1}
