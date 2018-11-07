@@ -86,6 +86,7 @@ class App extends Component {
 
           <Row>
             <Col s={6}>
+          
               <ParksContainer
                 deletePark={this.props.deletePark}
                 editPark={this.editPark}
@@ -94,11 +95,14 @@ class App extends Component {
                 fetchParks={this.props.fetchParks}
                 fetchCurrentUsers={this.props.fetchCurrentUsers}
               />
+              
             </Col>
 
 
             <Col s={6}>
+            
               <MapContainer s={6} parks={this.props.parks} />
+              
             </Col>
           </Row>
 
@@ -119,6 +123,7 @@ const mapStateToProps = state => {
     parkToEdit: state.parkReducer.parkToEdit,
     loggedIn: state.userReducer.loggedIn,
     currentUser: state.userReducer.currentUser,
+    checkIn: state.parkReducer.checkIn
   };
 };
 

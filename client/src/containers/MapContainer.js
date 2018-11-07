@@ -58,7 +58,7 @@ export class MapContainer extends Component {
   render() {
     const style = {
       width: '50%',
-      height: '100%'
+      height: '100%',
     }
 
     
@@ -70,6 +70,8 @@ export class MapContainer extends Component {
         center={this.state.currentLocation}
         zoom={13}
         onClick={this.onMapClicked}
+        className="Map"
+
       >
 
         {this.renderMarkers()}

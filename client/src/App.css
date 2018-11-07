@@ -1,6 +1,17 @@
 .Map-container {
   margin: 2px 0px;
   overflow: hidden;
+
+}
+
+
+
+.park-div {
+  float: left;
+}
+
+.map-div {
+  float: right;
 }
 
 .btn {
@@ -10,6 +21,7 @@
 .Parks-container {
   height: 600px ;
   overflow: scroll;
+  
 }
 
 .Login-Form {
