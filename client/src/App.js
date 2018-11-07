@@ -39,10 +39,14 @@ class App extends Component {
   // }
 
   handleLogOut = () => {
+    if(this.props.checkIn){
+      window.alert("Please check out before you leave! Thank you!")
+    } else {
     this.props.logoutUser()
     this.setState({
 
     })
+    }
 
   }
 

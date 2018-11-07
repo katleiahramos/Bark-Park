@@ -42,4 +42,5 @@ export function createUser(userParams){
 export function logoutUser() {
     localStorage.removeItem("jwtToken")
     localStorage.removeItem("currentUser")
+    
 }
