@@ -1,131 +1,154 @@
-import { Card, Col, Button, Modal, Dropdown, Chip, Icon ,NavItem} from "react-materialize";
+import {
+  Card,
+  Col,
+  Button,
+  Modal,
+  Dropdown,
+  Chip,
+  Icon,
+  NavItem
+} from "react-materialize";
 import React, { Component } from "react";
-import { checkIn, checkOut } from '../actions/parkActions'
-import { connect } from "react-redux"
+import { checkIn, checkOut } from "../actions/parkActions";
+import { connect } from "react-redux";
 
 class Park extends Component {
   state = {
-    currentUsers: [],
-  }
-  componentDidMount(){
-    
-    this.props.fetchCurrentUsers(this.props.parkInfo.id)
-      .then( users => this.setState({
-        currentUsers: users 
-      }))
+    currentUsers: []
+  };
+  componentDidMount() {
+    this.props.fetchCurrentUsers(this.props.parkInfo.id).then(users =>
+      this.setState({
+        currentUsers: users
+      })
+    );
   }
 
-  renderCurrentUsers = () => {
-    console.log("rendering current users");
-    
-    return (
-      this.state.currentUsers.map( (user, idx) => {
-        
-        return (
-          <Chip key={idx} >{user}</Chip>
-        )
-      })
-    )
-  }
+  // renderCurrentUsers = () => {
+  //   return this.state.currentUsers.map((user, idx) => {
+  //     return <Chip key={idx}>{user}</Chip>;
+  //   });
+  // };
 
   handleCheckIn = () => {
-    this.props.checkIn(this.props.parkInfo)
-    .then(()=>{
-      this.props.fetchCurrentUsers(this.props.parkInfo.id)
-      .then( users => this.setState({
-        currentUsers: users 
-      }))
-    })
-
-  }
+    this.props.checkIn(this.props.parkInfo).then(() => {
+      this.props.fetchCurrentUsers(this.props.parkInfo.id).then(users =>
+        this.setState({
+          currentUsers: users
+        })
+      );
+    });
+  };
 
   handleCheckOut = () => {
-    this.props.checkOut(this.props.checkedIn)
-    .then(()=>{
-      this.props.fetchCurrentUsers(this.props.parkInfo.id)
-      .then( users => this.setState({
-        currentUsers: users 
-      }))
-    })
-  }
+    this.props.checkOut(this.props.checkedIn).then(() => {
+      this.props.fetchCurrentUsers(this.props.parkInfo.id).then(users =>
+        this.setState({
+          currentUsers: users
+        })
+      );
+    });
+  };
 
-
-
- 
-
-  render(){
+  render() {
     console.log("in Park.js render");
 
-    if(this.props.checkedIn && this.props.checkedIn.park.id === this.props.parkInfo.id){
+    if (
+      this.props.checkedIn &&
+      this.props.checkedIn.park.id === this.props.parkInfo.id
+    ) {
       return (
         <Col s={6}>
           <Card title={this.props.parkInfo.name} className="teal lighten-5">
-            <p id={this.props.parkInfo.count}> <i class="fas fa-dog"></i> {this.state.currentUsers.length}</p>
-            <br></br>
-    
+            <p id={this.props.parkInfo.count}>
+              {" "}
+              <i class="fas fa-dog" /> {this.state.currentUsers.length}
+            </p>
+            <br />
+
             <Dropdown trigger={<Button icon="more_horiz" />}>
               <Modal
                 trigger={<NavItem waves="light"> Info</NavItem>}
                 header={this.props.parkInfo.name}
                 s={6}
               >
-                <h5><i class="fas fa-map-pin"></i> {this.props.parkInfo.address}</h5>
-                <h5><i class="fas fa-user-check"></i> {this.state.currentUsers.length}</h5>
-                {this.renderCurrentUsers()}
+                <h5>
+                  <i class="fas fa-map-pin" /> {this.props.parkInfo.address}
+                </h5>
+                <h5>
+                  <i class="fas fa-user-check" />{" "}
+                  {this.state.currentUsers.length}
+                </h5>
+                {/* commenting out showing user names for now */}
+                {/* {this.renderCurrentUsers()} */}
               </Modal>
-              <NavItem 
+              <NavItem
                 // floating
                 onClick={() => this.props.deletePark(this.props.parkInfo.id)}
                 waves="light"
                 // icon="delete"
-              >Delete</NavItem>
+              >
+                Delete
+              </NavItem>
 
               <NavItem
                 // floating
                 onClick={() => this.props.editPark(this.props.parkInfo.id)}
                 waves="light"
                 // icon="edit"
-              >Edit</NavItem>
+              >
+                Edit
+              </NavItem>
             </Dropdown>
 
             <Button onClick={this.handleCheckOut}>CHECK OUT</Button>
-
           </Card>
         </Col>
       );
-    } else if(this.props.checkedIn){
-       return (
+    } else if (this.props.checkedIn) {
+      return (
         <Col s={6}>
           <Card title={this.props.parkInfo.name} className="teal lighten-5">
-            <p id={this.props.parkInfo.count}> <i class="fas fa-dog"></i> {this.state.currentUsers.length}</p>
-            <br></br>
-    
+            <p id={this.props.parkInfo.count}>
+              {" "}
+              <i class="fas fa-dog" /> {this.state.currentUsers.length}
+            </p>
+            <br />
+
             <Dropdown trigger={<Button icon="more_horiz" />}>
               <Modal
                 trigger={<NavItem waves="light"> Info</NavItem>}
                 header={this.props.parkInfo.name}
                 s={6}
               >
-                <h5><i class="fas fa-map-pin"></i> {this.props.parkInfo.address}</h5>
-                <h5><i class="fas fa-user-check"></i> {this.state.currentUsers.length}</h5>
-                {this.renderCurrentUsers()}
+                <h5>
+                  <i class="fas fa-map-pin" /> {this.props.parkInfo.address}
+                </h5>
+                <h5>
+                  <i class="fas fa-user-check" />{" "}
+                  {this.state.currentUsers.length}
+                </h5>
+                {/* commenting out showing user names for now */}
+                {/* {this.renderCurrentUsers()} */}
               </Modal>
-              <NavItem 
+              <NavItem
                 // floating
                 onClick={() => this.props.deletePark(this.props.parkInfo.id)}
                 waves="light"
                 // icon="delete"
-              >Delete</NavItem>
+              >
+                Delete
+              </NavItem>
 
               <NavItem
                 // floating
                 onClick={() => this.props.editPark(this.props.parkInfo.id)}
                 waves="light"
                 // icon="edit"
-              >Edit</NavItem>
+              >
+                Edit
+              </NavItem>
             </Dropdown>
-
-
           </Card>
         </Col>
       );
@@ -133,39 +156,46 @@ class Park extends Component {
       return (
         <Col s={6}>
           <Card title={this.props.parkInfo.name} className="teal lighten-5">
-            <p id={this.props.parkInfo.count}> <i class="fas fa-dog"></i> {this.state.currentUsers.length}</p>
-            <br></br>
-    
+            <p id={this.props.parkInfo.count}>
+              {" "}
+              <i class="fas fa-dog" /> {this.state.currentUsers.length}
+            </p>
+            <br />
+
             <Dropdown trigger={<Button icon="more_horiz" />}>
               <Modal
                 trigger={<NavItem waves="light"> Info</NavItem>}
                 header={this.props.parkInfo.name}
                 s={6}
               >
-                <h5><i class="fas fa-map-pin"></i> {this.props.parkInfo.address}</h5>
-                <h5><i class="fas fa-user-check"></i> {this.state.currentUsers.length}</h5>
-                {this.renderCurrentUsers()}
+                <h5>
+                  <i class="fas fa-map-pin" /> {this.props.parkInfo.address}
+                </h5>
+                <h5>
+                  <i class="fas fa-user-check" />{" "}
+                  {this.state.currentUsers.length}
+                </h5>
+                {/* commenting out showing user names for now */}
+                {/* {this.renderCurrentUsers()} */}
               </Modal>
-              <NavItem 
-                // floating
+              <NavItem
                 onClick={() => this.props.deletePark(this.props.parkInfo.id)}
                 waves="light"
-                // icon="delete"
-              >Delete</NavItem>
+              >
+                Delete
+              </NavItem>
 
               <NavItem
-                // floating
                 onClick={() => this.props.editPark(this.props.parkInfo.id)}
                 waves="light"
-                // icon="edit"
-              >Edit</NavItem>
+              >
+                Edit
+              </NavItem>
             </Dropdown>
 
-            <Button 
-              // icon="check_circle_outline"
-              onClick={this.handleCheckIn}
-            ><i class="fas fa-user-check"></i> Check In</Button>
-
+            <Button onClick={this.handleCheckIn}>
+              <i class="fas fa-user-check" /> Check In
+            </Button>
           </Card>
         </Col>
       );
@@ -173,25 +203,25 @@ class Park extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    checkIn: (park)=>dispatch(checkIn(park)),
-    checkOut: (checkInData)=>dispatch(checkOut(checkInData))
-  }
-}
+    checkIn: park => dispatch(checkIn(park)),
+    checkOut: checkInData => dispatch(checkOut(checkInData))
+  };
+};
 
 const mapStateToProps = state => {
   return {
     checkedIn: state.parkReducer.checkIn
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Park);
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Park);
 
 // const Park = ({ parkInfo, deletePark, editPark, checkIn, fetchCurrentUsers }) => {
 //   // parkInfo =>  {name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", id: "cjmkvc3xu00023b5t4t1z4aq1", count: 1}
-
-
-
 
 //   // TODO: menu should be a circle menu button user clicks on and then all options populate around button
 //   return (
@@ -230,5 +260,3 @@ export default connect(mapStateToProps, mapDispatchToProps)(Park);
 //     </Col>
 //   );
 // };
-
-
