@@ -1,5 +1,3 @@
-
-
 class CheckinsController < ApplicationController 
 
     def create 
