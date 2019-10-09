@@ -43,6 +43,13 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  def current_checkins 
+    @user = User.find(params[:id])
+    current_checkins =   @user.checkins.active
+    render json: current_checkins
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     scope :api do 
     # get '/api/parks', to: "parks#index"
     # get :parks, to: "parks#index"
+      get 'users/:id/current-checkins', to: "users#current_checkins"
       post '/users', to: 'users#create'
       post '/login', to: "auth#create"
       # get '/welcome', to: "application#welcome"

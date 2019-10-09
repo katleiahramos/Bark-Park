@@ -10,13 +10,16 @@ import {
 } from "react-materialize";
 import React, { Component } from "react";
 import { checkIn, checkOut } from "../actions/parkActions";
+import { getCurrentCheckins } from "../actions/userActions";
 import { connect } from "react-redux";
 
 class Park extends Component {
   state = {
-    currentUsers: []
+    currentUsers: [],
+    currentCheckIns: this.props.currentCheckIns
   };
   componentDidMount() {
+    this.props.getCurrentCheckins();
     this.props.fetchCurrentUsers(this.props.parkInfo.id).then(users =>
       this.setState({
         currentUsers: users
@@ -50,9 +53,21 @@ class Park extends Component {
     });
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentCheckIns !== this.props.currentCheckIns) {
+      console.log("IN COMP DID UPDATE");
+      this.setState({
+        currentCheckIns: this.props.currentCheckIns
+      });
+    }
+  }
+
   render() {
     const { checkedIn, parkInfo } = this.props;
+    const { currentCheckIns } = this.state;
 
+    console.log("CURRENT CHECK INS", currentCheckIns);
+    console.log("IN RENDER");
     return (
       <Col s={6}>
         <Card title={this.props.parkInfo.name} className="teal lighten-5">
@@ -92,12 +107,12 @@ class Park extends Component {
             </NavItem>
           </Dropdown>
 
-          {checkedIn &&
-            checkedIn.park.id === parkInfo.id && (
-              <Button onClick={this.handleCheckOut}>CHECK OUT</Button>
-            )}
+          {currentCheckIns.length &&
+            currentCheckIns.find(
+              checkin => checkin.park.id === parkInfo.id
+            ) && <Button onClick={this.handleCheckOut}>CHECK OUT</Button>}
 
-          {!checkedIn && (
+          {!currentCheckIns.length && (
             <Button onClick={this.handleCheckIn}>
               <i class="fas fa-user-check" /> Check In
             </Button>
@@ -111,12 +126,14 @@ class Park extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     checkIn: park => dispatch(checkIn(park)),
-    checkOut: checkInData => dispatch(checkOut(checkInData))
+    checkOut: checkInData => dispatch(checkOut(checkInData)),
+    getCurrentCheckins: () => dispatch(getCurrentCheckins(2))
   };
 };
 
 const mapStateToProps = state => {
   return {
+    currentCheckIns: state.userReducer.currentCheckIns,
     checkedIn: state.parkReducer.checkIn
   };
 };
