@@ -1,31 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchParks, createPark, deletePark, updatePark, fetchCurrentUsers } from './actions/parkActions'
-import { Redirect } from 'react-router-dom';
+import {
+  fetchParks,
+  createPark,
+  deletePark,
+  updatePark,
+  fetchCurrentUsers
+} from "./actions/parkActions";
+import { Redirect } from "react-router-dom";
 
 import "./App.css";
 import { Modal, Row, Col, Button } from "react-materialize";
 
-import { logoutUser } from './actions/userActions'
+import { logoutUser } from "./actions/userActions";
 
 import ParksContainer from "./containers/ParksContainer";
 import ParkForm from "./components/ParkForm";
 import MapContainer from "./containers/MapContainer";
-import Nav from './components/Nav';
-
-
-
-
+import Nav from "./components/Nav";
 
 class App extends Component {
-
-
+  state = {
+    parks: []
+  };
   editPark = parkId => {
     const parkToEdit = this.props.parks.find(park => park.id === parkId);
-    this.props.editingPark(parkToEdit)
+    this.props.editingPark(parkToEdit);
   };
-
-
 
   // checkIn = park => {
   //   this.props.checkIn(park)
@@ -35,88 +36,75 @@ class App extends Component {
   //     })
   //   })
 
-
   // }
 
   handleLogOut = () => {
-    if(this.props.checkIn){
-      window.alert("Please check out before you leave! Thank you!")
+    if (this.props.checkIn) {
+      window.alert("Please check out before you leave! Thank you!");
     } else {
-    this.props.logoutUser()
-    this.setState({
-
-    })
+      this.props.logoutUser();
+      this.setState({});
     }
-
-  }
+  };
 
   componentDidMount() {
     // this.props.fetchParks();
   }
 
-
-
-
-
-
   render() {
+    const { parks } = this.props;
 
-    const modalForm = (this.props.parkToEdit ?
+    const modalForm = this.props.parkToEdit ? (
       <Modal
         id="edit-park-form"
         actions={
-          <Button
-            modal="close"
-            onClick={this.props.handleModalClose}>Close</Button>
+          <Button modal="close" onClick={this.props.handleModalClose}>
+            Close
+          </Button>
         }
-        open>
+        open
+      >
         <ParkForm
           updatePark={this.props.updatePark}
           name={this.props.parkToEdit.name}
           address={this.props.parkToEdit.address}
-          oldPark={this.props.parkToEdit} />
+          oldPark={this.props.parkToEdit}
+        />
       </Modal>
-      : null
-    )
+    ) : null;
 
-    if (localStorage.getItem("jwtToken") !== "undefined" && localStorage.getItem("jwtToken") !== null) {
+    if (
+      localStorage.getItem("jwtToken") !== "undefined" &&
+      localStorage.getItem("jwtToken") !== null
+    ) {
       // logged-in
       return (
         <div className="App ">
-
           <Nav addPark={this.props.addPark} handleLogOut={this.handleLogOut} />
 
           {modalForm}
 
           <Row>
             <Col s={6}>
-          
               <ParksContainer
                 deletePark={this.props.deletePark}
                 editPark={this.editPark}
-                parks={this.props.parks}
+                parks={parks}
                 checkIn={this.checkIn}
                 fetchParks={this.props.fetchParks}
                 fetchCurrentUsers={this.props.fetchCurrentUsers}
               />
-              
             </Col>
-
 
             <Col s={6}>
-            
               <MapContainer s={6} parks={this.props.parks} />
-              
             </Col>
           </Row>
-
-
         </div>
       );
     } else {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
-
   }
 }
 
@@ -134,22 +122,19 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     // addPark: park => dispatch({ type: "ADD_PARK", payload: park }),
-    addPark: (park) => dispatch(createPark(park)),
+    addPark: park => dispatch(createPark(park)),
     deletePark: parkId => dispatch(deletePark(parkId)),
-    editingPark: (park) => dispatch({ type: "EDITING_PARK", payload: park }),
-    updatePark: (parkEdited) => dispatch(updatePark(parkEdited)),
-    // checkIn: (park) => dispatch(checkIn(park)), 
+    editingPark: park => dispatch({ type: "EDITING_PARK", payload: park }),
+    updatePark: parkEdited => dispatch(updatePark(parkEdited)),
+    // checkIn: (park) => dispatch(checkIn(park)),
     handleModalClose: () => dispatch({ type: "CLOSE_MODAL" }),
     fetchParks: () => dispatch(fetchParks()),
     logoutUser: () => logoutUser(),
-    fetchCurrentUsers: (parkId) => dispatch(fetchCurrentUsers(parkId))
+    fetchCurrentUsers: parkId => dispatch(fetchCurrentUsers(parkId))
   };
 };
-
-
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
-

@@ -44,7 +44,11 @@ class Park extends Component {
   };
 
   handleCheckOut = () => {
-    this.props.checkOut(this.props.checkedIn).then(() => {
+    // FIXME: find a better way to handle checkin
+    //  && use lodash to safely get park id
+
+    const checkInId = this.props.currentCheckIns[0].id;
+    this.props.checkOut(checkInId).then(() => {
       this.props.fetchCurrentUsers(this.props.parkInfo.id).then(users =>
         this.setState({
           currentUsers: users
@@ -107,8 +111,8 @@ class Park extends Component {
             </NavItem>
           </Dropdown>
 
-          {currentCheckIns.length &&
-            currentCheckIns.find(
+          {!!currentCheckIns.length &&
+            !!currentCheckIns.find(
               checkin => checkin.park.id === parkInfo.id
             ) && <Button onClick={this.handleCheckOut}>CHECK OUT</Button>}
 
