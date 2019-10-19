@@ -5,6 +5,10 @@ email, or any other method with the owners of this repository before making a ch
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
+## Development 
+[TODO: add local instillation guide ]
+
+
 ## Pull Request Process
 [TODO: add pull request process]
 
