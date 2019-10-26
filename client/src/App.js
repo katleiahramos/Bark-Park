@@ -79,16 +79,27 @@ class App extends Component {
       : null
     )
 
+    const style = {
+      display : "grid",
+      height : "100vh",
+      alignItems : "flex-start"
+    }
+
+    const rowStyle = {
+      height : "100%",
+      marginBottom : "0"
+    }
+
     if (localStorage.getItem("jwtToken") !== "undefined" && localStorage.getItem("jwtToken") !== null) {
       // logged-in
       return (
-        <div className="App ">
+        <div className="App " style={style}>
 
           <Nav addPark={this.props.addPark} handleLogOut={this.handleLogOut} />
 
           {modalForm}
 
-          <Row>
+          <Row style={rowStyle}>
             <Col s={6}>
           
               <ParksContainer
