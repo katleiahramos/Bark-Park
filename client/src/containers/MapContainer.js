@@ -48,15 +48,15 @@ export class MapContainer extends Component {
 
   render() {
     const style = {
-      width: "50%",
-      height: "100%"
+      width: "100%",
+      height: "90vh",
+      position : "relative"
     };
 
     return (
-      <div className="Map-container">
+      <div className="Map-container" style={style}>
         <Map
           google={this.props.google}
-          style={style}
           center={this.state.currentLocation}
           zoom={13}
           onClick={this.onMapClicked}
