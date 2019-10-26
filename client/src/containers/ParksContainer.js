@@ -11,7 +11,7 @@ class ParksContainer extends Component {
   render(){
 
     const style = {
-      height : "100%"
+      height : "90vh"
     }
 
     return <div style={style} className="Parks-container">
