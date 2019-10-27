@@ -10,7 +10,6 @@ React app to help you and your dogs check-out local dog parks and make new frien
 
 [LIVE DEMO](https://bark-park-app.herokuapp.com/)
 
-## Running this application locally
 
 # Mac OSX Prerequisites
 1. Make sure xcode is up to date.   
@@ -82,7 +81,7 @@ React app to help you and your dogs check-out local dog parks and make new frien
   8. Open your browser to `localhost:5000`
 
 ## Contributing
-
+For more information on how to contribute to this project, please visit: https://github.com/katleiahramos/Bark-Park/blob/master/contributing.md 
 Bug reports and pull requests are welcome on GitHub at https://github.com/katleiahramos/Bark-Park
 
 ## License
