@@ -1,10 +1,10 @@
-# Bark-Park
+# Bark-Park. Woof woof.
 
 React app to help you and your dogs check-out local dog parks and make new friends!
 
 ![](https://i.imgur.com/VspCMYM.png)
 
-![](https://media.giphy.com/media/69sHeFFc6ybtxzQir6/giphy.gif)
+![](https://media.giphy.com/media/xFnAObsU5nMrUUC3HX/giphy.gif)
 
 
 
