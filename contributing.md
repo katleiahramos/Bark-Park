@@ -16,6 +16,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 4. Double check that you have the latest version of the main project (If needed, you can use: `git pull git@github.com:katleiahramos/Bark-Park.git master`).  If there are new changes, push those to your fork as well.
 5. Open a PR on Github from your fork to the main porject.  The PR should be titled with the number and name of the issue.
     Ex: `#18 [Task] Remove broken GIF from README`
+6. Add at least 1 reviewer to your PR.  
 
 ## Code of Conduct
 
