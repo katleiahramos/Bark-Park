@@ -7,19 +7,19 @@ const Parks = ({ deletePark, editPark, parks, checkIn, fetchCurrentUsers}) => {
     return parks.map((park, idx) => {
       // park => {name: "Wriggly Field Dog Friendly Area", address: "2645 N Sheffield Ave, Chicago, IL 60614", id: "cjmkvc3xu00023b5t4t1z4aq1", count: 1}
       return (
-        <Park 
+        <Park
           deletePark={deletePark}
-          editPark={editPark} 
-          parkInfo={park} 
+          editPark={editPark}
+          parkInfo={park}
           key={idx}
-          // checkIn={checkIn} 
+          // checkIn={checkIn}
           fetchCurrentUsers={fetchCurrentUsers}/>
       );
     });
   };
 
   const style = {
-    heigt : "100%"
+    height : "100%"
   }
 
   const rowStyle = {
@@ -27,16 +27,12 @@ const Parks = ({ deletePark, editPark, parks, checkIn, fetchCurrentUsers}) => {
   }
 
   return (
-    <div className="Parks" style={style} >
+    <div className="Parks" style={style}>
       <Row style={rowStyle}>
-        {renderParks()} 
-      
+        {renderParks()}
       </Row>
-
-      
     </div>
   );
-
 
 }
 

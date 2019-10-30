@@ -8,7 +8,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import AppRouter from "./components/appRouter";
 
-// require("dotenv").config();
+require("dotenv").config();
 
 // import App from './App';
 // import { BrowserRouter as Router, Route } from 'react-router-dom';

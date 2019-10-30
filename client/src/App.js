@@ -80,8 +80,6 @@ class App extends Component {
     )
 
     const style = {
-      display : "grid",
-      height : "100vh",
       alignItems : "flex-start"
     }
 
@@ -93,7 +91,7 @@ class App extends Component {
     if (localStorage.getItem("jwtToken") !== "undefined" && localStorage.getItem("jwtToken") !== null) {
       // logged-in
       return (
-        <div className="App " style={style}>
+        <div className="App" style={style}>
 
           <Nav addPark={this.props.addPark} handleLogOut={this.handleLogOut} />
 
@@ -101,7 +99,7 @@ class App extends Component {
 
           <Row style={rowStyle}>
             <Col s={6}>
-          
+
               <ParksContainer
                 deletePark={this.props.deletePark}
                 editPark={this.editPark}
@@ -110,14 +108,14 @@ class App extends Component {
                 fetchParks={this.props.fetchParks}
                 fetchCurrentUsers={this.props.fetchCurrentUsers}
               />
-              
+
             </Col>
 
 
             <Col s={6}>
-            
+
               <MapContainer s={6} parks={this.props.parks} />
-              
+
             </Col>
           </Row>
 
@@ -149,7 +147,7 @@ const mapDispatchToProps = dispatch => {
     deletePark: parkId => dispatch(deletePark(parkId)),
     editingPark: (park) => dispatch({ type: "EDITING_PARK", payload: park }),
     updatePark: (parkEdited) => dispatch(updatePark(parkEdited)),
-    // checkIn: (park) => dispatch(checkIn(park)), 
+    // checkIn: (park) => dispatch(checkIn(park)),
     handleModalClose: () => dispatch({ type: "CLOSE_MODAL" }),
     fetchParks: () => dispatch(fetchParks()),
     logoutUser: () => logoutUser(),
@@ -163,4 +161,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
-
