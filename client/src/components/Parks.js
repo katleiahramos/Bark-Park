@@ -18,9 +18,17 @@ const Parks = ({ deletePark, editPark, parks, checkIn, fetchCurrentUsers}) => {
     });
   };
 
+  const style = {
+    heigt : "100%"
+  }
+
+  const rowStyle = {
+    marginBottom : "0"
+  }
+
   return (
-    <div className="Parks">
-      <Row>
+    <div className="Parks" style={style} >
+      <Row style={rowStyle}>
         {renderParks()} 
       
       </Row>

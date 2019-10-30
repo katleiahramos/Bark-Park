@@ -9,7 +9,12 @@ class ParksContainer extends Component {
 
   
   render(){
-    return <div className="Parks-container">
+
+    const style = {
+      height : "90vh"
+    }
+
+    return <div style={style} className="Parks-container">
         <Parks 
           deletePark={this.props.deletePark}
           editPark={this.props.editPark} 
