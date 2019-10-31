@@ -1,13 +1,4 @@
-import {
-  Card,
-  Col,
-  Button,
-  Modal,
-  Dropdown,
-  Chip,
-  Icon,
-  NavItem
-} from "react-materialize";
+import { Card, Col, Button, Modal, Dropdown, NavItem } from "react-materialize";
 import React, { Component } from "react";
 import { checkIn, checkOut } from "../actions/parkActions";
 import { connect } from "react-redux";
@@ -51,18 +42,15 @@ class Park extends Component {
   };
 
   render() {
-    console.log("in Park.js render");
-
-    if (
-      this.props.checkedIn &&
-      this.props.checkedIn.park.id === this.props.parkInfo.id
-    ) {
+    const currentUser = localStorage.getItem("currentUser");
+    const { currentUsers } = this.state;
+    if (currentUsers.includes(currentUser)) {
       return (
         <Col s={6}>
           <Card title={this.props.parkInfo.name} className="teal lighten-5">
             <p id={this.props.parkInfo.count}>
               {" "}
-              <i class="fas fa-dog" /> {this.state.currentUsers.length}
+              <i className="fas fa-dog" /> {this.state.currentUsers.length}
             </p>
             <br />
 
@@ -73,10 +61,10 @@ class Park extends Component {
                 s={6}
               >
                 <h5>
-                  <i class="fas fa-map-pin" /> {this.props.parkInfo.address}
+                  <i className="fas fa-map-pin" /> {this.props.parkInfo.address}
                 </h5>
                 <h5>
-                  <i class="fas fa-user-check" />{" "}
+                  <i className="fas fa-user-check" />{" "}
                   {this.state.currentUsers.length}
                 </h5>
                 {/* commenting out showing user names for now */}
@@ -111,7 +99,7 @@ class Park extends Component {
           <Card title={this.props.parkInfo.name} className="teal lighten-5">
             <p id={this.props.parkInfo.count}>
               {" "}
-              <i class="fas fa-dog" /> {this.state.currentUsers.length}
+              <i className="fas fa-dog" /> {this.state.currentUsers.length}
             </p>
             <br />
 
@@ -122,10 +110,10 @@ class Park extends Component {
                 s={6}
               >
                 <h5>
-                  <i class="fas fa-map-pin" /> {this.props.parkInfo.address}
+                  <i className="fas fa-map-pin" /> {this.props.parkInfo.address}
                 </h5>
                 <h5>
-                  <i class="fas fa-user-check" />{" "}
+                  <i className="fas fa-user-check" />{" "}
                   {this.state.currentUsers.length}
                 </h5>
                 {/* commenting out showing user names for now */}
@@ -158,7 +146,7 @@ class Park extends Component {
           <Card title={this.props.parkInfo.name} className="teal lighten-5">
             <p id={this.props.parkInfo.count}>
               {" "}
-              <i class="fas fa-dog" /> {this.state.currentUsers.length}
+              <i className="fas fa-dog" /> {this.state.currentUsers.length}
             </p>
             <br />
 
@@ -169,10 +157,10 @@ class Park extends Component {
                 s={6}
               >
                 <h5>
-                  <i class="fas fa-map-pin" /> {this.props.parkInfo.address}
+                  <i className="fas fa-map-pin" /> {this.props.parkInfo.address}
                 </h5>
                 <h5>
-                  <i class="fas fa-user-check" />{" "}
+                  <i className="fas fa-user-check" />{" "}
                   {this.state.currentUsers.length}
                 </h5>
                 {/* commenting out showing user names for now */}
@@ -194,7 +182,7 @@ class Park extends Component {
             </Dropdown>
 
             <Button onClick={this.handleCheckIn}>
-              <i class="fas fa-user-check" /> Check In
+              <i className="fas fa-user-check" /> Check In
             </Button>
           </Card>
         </Col>
