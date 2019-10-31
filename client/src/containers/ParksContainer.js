@@ -12,13 +12,7 @@ class ParksContainer extends Component {
       height: "90vh"
     };
 
-    const {
-      currentUser,
-      deletePark,
-      editPark,
-      parks,
-      fetchCurrentUsers
-    } = this.props;
+    const { deletePark, editPark, parks, fetchCurrentUsers } = this.props;
 
     return (
       <div style={style} className="Parks-container">
