@@ -6,6 +6,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import rootReducer from "./reducers/index.js";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
+import { RestfulProvider } from "restful-react";
 import AppRouter from "./components/appRouter";
 
 // require("dotenv").config();
@@ -24,9 +25,11 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <AppRouter />
-  </Provider>,
+  <RestfulProvider base="/api">
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
+  </RestfulProvider>,
   document.getElementById("root")
 );
 

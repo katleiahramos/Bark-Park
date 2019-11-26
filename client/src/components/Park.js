@@ -1,13 +1,4 @@
-import {
-  Card,
-  Col,
-  Button,
-  Modal,
-  Dropdown,
-  Chip,
-  Icon,
-  NavItem
-} from "react-materialize";
+import { Card, Col, Button, Modal, Dropdown, NavItem } from "react-materialize";
 import React, { Component } from "react";
 import { checkIn, checkOut } from "../actions/parkActions";
 import { connect } from "react-redux";

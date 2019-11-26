@@ -1,38 +1,32 @@
-import React, { Component } from "react";
+import React from "react";
+import { useGet } from "restful-react";
 import Parks from "../components/Parks";
 // import { connect } from 'react-redux'
+const style = {
+  height: "90vh"
+};
 
-class ParksContainer extends Component {
-  componentDidMount() {
-    this.props.fetchParks();
-  }
+const ParksContainer = props => {
+  const { error, loading, data } = useGet({ path: "/parks" });
 
-  render() {
-    const style = {
-      height: "90vh"
-    };
+  const { deletePark, editPark, fetchCurrentUsers } = props;
 
-    const {
-      currentUser,
-      deletePark,
-      editPark,
-      parks,
-      fetchCurrentUsers
-    } = this.props;
-
-    return (
-      <div style={style} className="Parks-container">
+  return (
+    <div style={style} className="Parks-container">
+      {error && <div>An error has occured!</div>}
+      {loading && <div>Loading...</div>}
+      {data && (
         <Parks
           deletePark={deletePark}
           editPark={editPark}
-          parks={parks}
+          parks={data}
           // checkIn={this.props.checkIn}
           fetchCurrentUsers={fetchCurrentUsers}
         />
-      </div>
-    );
-  }
-}
+      )}
+    </div>
+  );
+};
 
 // TODO: seperation of concerns for parks/store
 
