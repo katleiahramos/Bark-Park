@@ -51,9 +51,12 @@ class Park extends Component {
   };
 
   render() {
-    const currentUser = localStorage.getItem("currentUser");
-    const { currentUsers } = this.state;
-    if (currentUsers.includes(currentUser)) {
+    console.log("in Park.js render");
+
+    if (
+      this.props.checkedIn &&
+      this.props.checkedIn.park.id === this.props.parkInfo.id
+    ) {
       return (
         <Col s={6}>
           <Card title={this.props.parkInfo.name} className="teal lighten-5">

@@ -1,40 +1,34 @@
-import React, { Component } from "react";
-import Parks from "../components/Parks";
+import React, { Component } from 'react'
+import Parks from '../components/Parks'
 // import { connect } from 'react-redux'
 
 class ParksContainer extends Component {
-  componentDidMount() {
+  componentDidMount(){
     this.props.fetchParks();
   }
 
-  render() {
+  
+  render(){
+
     const style = {
-      height: "90vh"
-    };
+      height : "90vh"
+    }
 
-    const {
-      currentUser,
-      deletePark,
-      editPark,
-      parks,
-      fetchCurrentUsers
-    } = this.props;
-
-    return (
-      <div style={style} className="Parks-container">
-        <Parks
-          deletePark={deletePark}
-          editPark={editPark}
-          parks={parks}
+    return <div style={style} className="Parks-container">
+        <Parks 
+          deletePark={this.props.deletePark}
+          editPark={this.props.editPark} 
+          parks={this.props.parks}
           // checkIn={this.props.checkIn}
-          fetchCurrentUsers={fetchCurrentUsers}
-        />
-      </div>
-    );
+          fetchCurrentUsers={this.props.fetchCurrentUsers} />
+        
+        
+
+      </div>;
   }
 }
 
-// TODO: seperation of concerns for parks/store
+// TODO: seperation of concerns for parks/store 
 
 // const mapStateToProps = (state) => {s
 //   return {parks: state.parkReducer.parks}
@@ -48,4 +42,4 @@ class ParksContainer extends Component {
 
 // export default connect(mapStateToProps, mapDispatchToProps)(ParksContainer)
 
-export default ParksContainer;
+export default ParksContainer
