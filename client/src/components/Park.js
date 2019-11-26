@@ -59,7 +59,7 @@ class Park extends Component {
           <Card title={this.props.parkInfo.name} className="teal lighten-5">
             <p id={this.props.parkInfo.count}>
               {" "}
-              <i class="fas fa-dog" /> {this.state.currentUsers.length}
+              <i className="fas fa-dog" /> {this.state.currentUsers.length}
             </p>
             <br />
 
@@ -70,10 +70,10 @@ class Park extends Component {
                 s={6}
               >
                 <h5>
-                  <i class="fas fa-map-pin" /> {this.props.parkInfo.address}
+                  <i className="fas fa-map-pin" /> {this.props.parkInfo.address}
                 </h5>
                 <h5>
-                  <i class="fas fa-user-check" />{" "}
+                  <i className="fas fa-user-check" />{" "}
                   {this.state.currentUsers.length}
                 </h5>
                 {/* commenting out showing user names for now */}
@@ -108,7 +108,7 @@ class Park extends Component {
           <Card title={this.props.parkInfo.name} className="teal lighten-5">
             <p id={this.props.parkInfo.count}>
               {" "}
-              <i class="fas fa-dog" /> {this.state.currentUsers.length}
+              <i className="fas fa-dog" /> {this.state.currentUsers.length}
             </p>
             <br />
 
@@ -119,10 +119,10 @@ class Park extends Component {
                 s={6}
               >
                 <h5>
-                  <i class="fas fa-map-pin" /> {this.props.parkInfo.address}
+                  <i className="fas fa-map-pin" /> {this.props.parkInfo.address}
                 </h5>
                 <h5>
-                  <i class="fas fa-user-check" />{" "}
+                  <i className="fas fa-user-check" />{" "}
                   {this.state.currentUsers.length}
                 </h5>
                 {/* commenting out showing user names for now */}
@@ -155,7 +155,7 @@ class Park extends Component {
           <Card title={this.props.parkInfo.name} className="teal lighten-5">
             <p id={this.props.parkInfo.count}>
               {" "}
-              <i class="fas fa-dog" /> {this.state.currentUsers.length}
+              <i className="fas fa-dog" /> {this.state.currentUsers.length}
             </p>
             <br />
 
@@ -166,10 +166,10 @@ class Park extends Component {
                 s={6}
               >
                 <h5>
-                  <i class="fas fa-map-pin" /> {this.props.parkInfo.address}
+                  <i className="fas fa-map-pin" /> {this.props.parkInfo.address}
                 </h5>
                 <h5>
-                  <i class="fas fa-user-check" />{" "}
+                  <i className="fas fa-user-check" />{" "}
                   {this.state.currentUsers.length}
                 </h5>
                 {/* commenting out showing user names for now */}
@@ -191,7 +191,7 @@ class Park extends Component {
             </Dropdown>
 
             <Button onClick={this.handleCheckIn}>
-              <i class="fas fa-user-check" /> Check In
+              <i className="fas fa-user-check" /> Check In
             </Button>
           </Card>
         </Col>
