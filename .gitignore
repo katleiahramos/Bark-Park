@@ -28,3 +28,6 @@
 
 # NODE MODULES 
 /node_modules
+
+# Ignore .env files
+.env

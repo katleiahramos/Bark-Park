@@ -10,8 +10,13 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 
 ## Pull Request Process
-[TODO: add pull request process]
-
+1. Fork the project and clone to your local environment.
+2. Check for open issues on the main project.  If you see an issue you would like to contribute to, claim the issue in a comment.  Or if you would like, create a new issue.
+3. Make your changes locally and commit and push to your fork.
+4. Double check that you have the latest version of the main project (If needed, you can use: `git pull git@github.com:katleiahramos/Bark-Park.git master`).  If there are new changes, push those to your fork as well.
+5. Open a PR on Github from your fork to the main project.  Click on `compare across forks`.  For the base repository, select `base:develop`.  For the head repository, select your forked project and the branch you're pulling from.  
+6. The PR should be titled with the number and name of the issue.
+    Ex: `#18 [Task] Remove broken GIF from README`
 
 ## Code of Conduct
 
